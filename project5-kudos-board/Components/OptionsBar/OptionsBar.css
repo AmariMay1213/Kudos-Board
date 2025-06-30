@@ -1,7 +1,6 @@
-.search-bar {
+.card-options-bar {
     position: fixed;
-    top: 230px; /* This should match the height + padding of your header */
-
+    top: 300px;
 
     background-color: #000000;
     padding: 10px;
@@ -17,6 +16,23 @@
     margin: 0 auto; /* horizontally centers it */
 
 }
+
+.create-board-button {
+position: fixed;
+    top: 370px;
+
+    background-color: #000000;
+    padding: 10px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centers the logo horizontally */
+    gap: 10px; /* Adds spacing between input and buttons */
+
+    left: 0;
+    right: 0;
+    width: fit-content; /* Makes the div shrink-wrap to its content */
+    margin: 0 auto; /* horizontally centers it */}
 
 .search-bar input {
     padding: 8px;

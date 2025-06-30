@@ -4,6 +4,9 @@
 
 import { useState, useEffect } from "react";
 import SearchBar from "../SearchBar/SearchBar";
+import "./HomePage.css"
+import OptionsBar from "../OptionsBar/OptionsBar";
+import KudosBoards from "../KudosBoards/KudosBoards"
 
 function HomePage() {
   // needs a search bar with a search and clear
@@ -17,6 +20,10 @@ function HomePage() {
   return (
     <>
       <SearchBar setKudosBoards={setKudosBoards} />
+      <OptionsBar setKudosBoards={setKudosBoards} />
+
+      {/* TODO: lets double check this line, should be a div just for the kudos boards to be listed in a grid, but you never know */}
+      <KudosBoards kudosBoards={kudosBoards} />
     </>
   );
 }

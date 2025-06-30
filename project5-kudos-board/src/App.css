@@ -13,7 +13,7 @@ header {
   width: 100%;
   height: 100px; /* Adjust height as needed */
   padding: 50px;
-  background-color: #333;
+  background-color: #000000;
   color: white;
   display: flex;
   align-items: center;
@@ -32,7 +32,7 @@ footer {
   left: 0;
   width: 100%;
   height: 50px; /* Adjust height as needed */
-  background-color: #333;
+  background-color: #000000;
   color: white;
   display: flex;
   align-items: center;
@@ -40,8 +40,4 @@ footer {
   /* z-index: 1000; */
 }
 
-/* Main Content Area (space between header and footer) */
-.main-content {
-  padding-top: 70px; /* Enough space for header */
-  padding-bottom: 60px; /* Enough space for footer */
-}
+

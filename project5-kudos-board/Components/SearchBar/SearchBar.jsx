@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import "./SearchBar.css"
 // import './App.css'
 
 const SearchBar = ({ setKudosBoards }) => { // this was passed in from HomePage.jsx so the hook can be used in SearchBar.jsx
     const [searchQuery, setSearchQuery] = useState(""); // state variable to hold search query and updates as the user types in the search bar
-
 
     const handleSearch = async () => { 
         // when the user clicks the search button, we want to fetch movies based on the search query.
@@ -50,7 +50,5 @@ const SearchBar = ({ setKudosBoards }) => { // this was passed in from HomePage.
     );
 }    
 
-
 export default SearchBar
-
 
