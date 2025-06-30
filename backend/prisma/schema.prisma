@@ -13,3 +13,26 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+
+model Card{
+  card_Id Int @id @default(autoincrement())
+  board_Id Int
+  title    String
+  text     String 
+  gif_Url  String
+
+  board Board @relation(fields: [board_Id], refrences: [board_Id], onDelete:Cascade)
+
+
+}
+
+model Board{
+  board_Id Int @id @default(autoincrement())
+  title    String
+  category String
+  author   String
+  created_at   DateTime     @default(now())
+
+
+}
