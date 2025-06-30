@@ -19,10 +19,15 @@ model Card{
   card_Id Int @id @default(autoincrement())
   board_Id Int
   title    String
-  text     String 
+  description     String 
   gif_Url  String
+  author   String?
+  upVotes  Int   @default(0)
 
-  board Board @relation(fields: [board_Id], refrences: [board_Id], onDelete:Cascade)
+  board Board @relation(fields: [board_Id], references: [board_Id], onDelete:Cascade)
+  user_Id  Int?
+  user     User? @relation("UserCards", fields: [user_Id], references: [id])
+
 
 
 }
@@ -34,5 +39,18 @@ model Board{
   author   String
   created_at   DateTime     @default(now())
 
+  cards     Card[]
+  user_Id   Int? 
+  user      User?  @relation("UserBoards", fields: [user_Id], references: [id])
 
+}
+
+model User {
+  id       Int      @id @default(autoincrement())
+  email    String   @unique
+  username String?
+  password String
+
+  boards   Board[]  @relation("UserBoards")
+  cards    Card[]   @relation("UserCards")
 }
