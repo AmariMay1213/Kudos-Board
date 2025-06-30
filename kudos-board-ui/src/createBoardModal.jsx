@@ -21,7 +21,26 @@ function createBoardModal({ showCreateBoardModal }) {
   return (
     <div className="createBoardInfo">
       {/* showCreateBoardModal(true); */}
+
+      {/* Close button */}
+      <div className="control">
+        <button
+          className="button"
+          type="button"
+          onClick={() => {
+            setInput("");
+            showCreateBoardModal(false);
+            // Function to close modal here
+          }}
+        >
+          Create Board
+        </button>
+      </div>
+
+
+
       <form onSubmit={handleSubmit}>
+        <h2>Create a New Board</h2>
         {/* Title text box */}
         <div className="input-field">
           <label className="label">Title:</label>
