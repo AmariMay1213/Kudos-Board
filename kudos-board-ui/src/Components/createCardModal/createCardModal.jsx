@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import { Link } from "react-router-dom";
 import axios from "axios"
-import "./createBoardModal.css";
+import "./createCardModal.css";
 
 
 const [input, setInput] = useState("")
@@ -15,12 +15,12 @@ function handleChange(value) {
   setInput(value);
 }
 
-// Send in the showCreateBoardModal setter, which allows for one to exit the modal upon submission
+// Send in the showCreateCardModal setter, which allows for one to exit the modal upon submission
 
-function createBoardModal({ showCreateBoardModal }) {
+function createCardModal({ showCreateCardModal }) {
   return (
-    <div className="createBoardInfo">
-      {/* showCreateBoardModal(true); */}
+    <div className="createCardInfo">
+      {/* showCreateCardModal(true); */}
 
       {/* Close button */}
       <div className="control">
@@ -29,7 +29,7 @@ function createBoardModal({ showCreateBoardModal }) {
           type="button"
           onClick={() => {
             setInput("");
-            showCreateBoardModal(false);
+            showCreateCardModal(false);
             // Function to close modal here
           }}
         >
@@ -37,90 +37,70 @@ function createBoardModal({ showCreateBoardModal }) {
         </button>
       </div>
 
-
-
       <form onSubmit={handleSubmit}>
-        <h2>Create a New Board</h2>
+        <h2>Create a New Card</h2>
+
         {/* Title text box */}
         <div className="input-field">
-          <label className="label">Title:</label>
+          <label className="label">Card Title:</label>
           <div className="control">
             <input
+              placeholder="Enter card title"
               className="input"
               type="text"
               value={input}
               onChange={(e) =>
-                setBoardInfo((u) => ({ ...u, title: e.target.value }))
+                setCardInfo((u) => ({ ...u, title: e.target.value }))
               }
             />
           </div>
         </div>
 
-        {/* Category drop down */}
-        <div className="drop-down">
-          <label className="label">Category:</label>
+        {/* Card description text box */}
+        <div className="input-field">
+          <label className="label">Card Description:</label>
           <div className="control">
-            <select
+            <input
+              placeholder="Enter card description"
               className="input"
               type="text"
               value={input}
-              // onChange={(e) =>
-              //   setBoardInfo((u) => ({ ...u, title: e.target.value }))
-              // }
-            >
-              <option>Select a category</option>
-              <option
-                onChange={(e) =>
-                  setBoardInfo((u) => ({ ...u, category: e.target.value }))
-                }
-              >
-                Celebration
-              </option>
-              <option
-                onChange={(e) =>
-                  setBoardInfo((u) => ({ ...u, category: e.target.value }))
-                }
-              >
-                Thank You
-              </option>
-              <option
-                onChange={(e) =>
-                  setBoardInfo((u) => ({ ...u, category: e.target.value }))
-                }
-              >
-                Inspiration
-              </option>
-            </select>
+              onChange={(e) =>
+                setCardInfo((u) => ({ ...u, description: e.target.value }))
+              }
+            />
           </div>
         </div>
+
 
         {/* Author text box */}
         <div className="input-field">
-          <label className="label">Author</label>
+          <label className="label">Owner</label>
           <div className="control">
             <input
+            placeholder="Enter owner (optional)"
               className="input"
               type="text"
               value={input}
               onChange={(e) =>
-                setBoardInfo((u) => ({ ...u, author: e.target.value }))
+                setCardInfo((u) => ({ ...u, author: e.target.value }))
               }
             />
           </div>
         </div>
 
-        {/* Create board button */}
+        {/* Create card button */}
         <div className="control">
           <button
             className="button"
             type="button"
             onClick={() => {
               setInput("");
-              showCreateBoardModal(false);
+              showCreateCardModal(false);
               // Function to close modal here
             }}
           >
-            Create Board
+            Create Card
           </button>
         </div>
       </form>
