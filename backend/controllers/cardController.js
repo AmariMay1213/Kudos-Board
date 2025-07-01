@@ -56,15 +56,26 @@ exports.create = async (req, res) => {
   res.status(201).json(newCard);
 };
 
-exports.upvote = async (req,res) => {
-    const{upVotes} =req.body; 
+exports.upvote = async (req, res) => {
+  const card_Id = Number(req.params.card_Id);
 
+  try {
     const upVote = await prisma.card.update({
-        data: {upVotes},
-        upVotes: {increment: 1}, 
-    })
-    res.json(upVote); 
-}
+      where: { card_Id },
+      data: {
+        upVotes: {
+          increment: 1,
+        },
+      },
+    });
+
+    res.json(upVote);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Failed to upvote card." });
+  }
+};
+
 
 exports.removeById = async (req, res) => {
  const card_Id = Number(req.params.card_Id);
