@@ -1,25 +1,23 @@
 import React, {useState, useEffect} from "react";
 import { Link } from "react-router-dom";
 import axios from "axios"
-import "./createBoardModal.css";
+import "./CreateBoardModal.css";
 
 
-const [input, setInput] = useState("");
-const [category, setCategory] = useState(null);
 
+function CreateBoardModal({ boardInfo, setBoardInfo, showCreateBoardModal }) {
+  const [input, setInput] = useState("");
+  const [category, setCategory] = useState(null);
 
-// Pass the information entered back to the component that called it
-function handleSubmit(){
+  // Pass the information entered back to the component that called it
+  function handleSubmit() {}
 
-}
+  function handleChange(value) {
+    setInput(value);
+  }
 
-function handleChange(value) {
-  setInput(value);
-}
+  // Send in the showCreateBoardModal setter, which allows for one to exit the modal upon submission
 
-// Send in the showCreateBoardModal setter, which allows for one to exit the modal upon submission
-
-function createBoardModal({ boardInfo, setBoardInfo, showCreateBoardModal }) {
   return (
     <div className="createBoardInfo">
       {showCreateBoardModal(true)}
@@ -38,7 +36,6 @@ function createBoardModal({ boardInfo, setBoardInfo, showCreateBoardModal }) {
           Close
         </button>
       </div>
-
 
       {/* Form section for the create new board moda; */}
       <form onSubmit={handleSubmit}>
@@ -123,4 +120,4 @@ function createBoardModal({ boardInfo, setBoardInfo, showCreateBoardModal }) {
   );
 }
 
-export default createBoardModal;
+export default CreateBoardModal;
