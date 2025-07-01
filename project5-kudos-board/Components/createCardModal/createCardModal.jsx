@@ -1,23 +1,21 @@
 import React, {useState, useEffect} from "react";
 import { Link } from "react-router-dom";
 import axios from "axios"
-import "./createCardModal.css";
+import "./CreateCardModal.css";
 
 
-const [input, setInput] = useState("")
+function CreateCardModal({ showCreateCardModal }) {
+  const [input, setInput] = useState("");
 
-// Pass the information entered back to the component that called it
-function handleSubmit(){
+  // Pass the information entered back to the component that called it
+  function handleSubmit() {}
 
-}
+  function handleChange(value) {
+    setInput(value);
+  }
 
-function handleChange(value) {
-  setInput(value);
-}
+  // Send in the showCreateCardModal setter, which allows for one to exit the modal upon submission
 
-// Send in the showCreateCardModal setter, which allows for one to exit the modal upon submission
-
-function createCardModal({ showCreateCardModal }) {
   return (
     <div className="createCardInfo">
       {/* showCreateCardModal(true); */}
@@ -72,22 +70,14 @@ function createCardModal({ showCreateCardModal }) {
           </div>
         </div>
 
-
-
-          {/* Search GIFS */}
-
-          
-
-
-
-
+        {/* Search GIFS */}
 
         {/* Author text box */}
         <div className="input-field">
           <label className="label">Owner</label>
           <div className="control">
             <input
-            placeholder="Enter owner (optional)"
+              placeholder="Enter owner (optional)"
               className="input"
               type="text"
               value={input}
@@ -117,4 +107,4 @@ function createCardModal({ showCreateCardModal }) {
   );
 }
 
-export default createCardModal;
+export default CreateCardModal;

@@ -1,7 +1,7 @@
-import cardCard from "../cardCard/cardCard";
-import "./cardGrid.css";
+import CardCard from "./CardCard/CardCard";
+import "./CardGrid.css";
 
-function cardGrid({ cards = [] }) {
+function CardGrid({ cards = [] }) {
   return (
     <div id="Buy" className="cardGrid">
       <div className="content">
@@ -11,7 +11,7 @@ function cardGrid({ cards = [] }) {
               <p>No cards available</p>
             </div>
           ) : (
-            cards.map((board) => <cardCard key={card.id} card={card} />)
+            cards.map((board) => <CardCard key={card.id} card={card} />)
           )}
         </div>
       </div>
@@ -19,4 +19,4 @@ function cardGrid({ cards = [] }) {
   );
 }
 
-export default cardGrid;
+export default CardGrid;

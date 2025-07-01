@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import "./cardCard.css";
+import "./CardCard.css";
 
-function cardCard({ card }) {
+function CardCard({ card }) {
   return (
     <div className="cardCard">
       {/*      This is where the gif will be hypothetically   
@@ -31,4 +31,4 @@ function cardCard({ card }) {
   );
 }
 
-export default cardCard;
+export default CardCard;
