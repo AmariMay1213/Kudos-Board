@@ -2,7 +2,7 @@
 // import './App.css'
 // import KudosList from "./KudosList";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import SearchBar from "../SearchBar/SearchBar";
 import "./HomePage.css"
 import OptionsBar from "../OptionsBar/OptionsBar";

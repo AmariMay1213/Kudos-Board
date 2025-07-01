@@ -1,7 +1,9 @@
 // import { useState, useEffect } from "react";
 import axios from "axios";
 import "./OptionsBar.css"
-
+// import CreateBoardModal from "../createBoardModal/createBoardModal";
+// TODO: export function for createNewBoard from Jessica
+// TODO: import {function name} from <whereever it is from>
 
 const OptionsBar = ({ setKudosBoards }) => {
 

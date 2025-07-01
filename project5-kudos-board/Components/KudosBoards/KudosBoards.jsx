@@ -1,13 +1,16 @@
 // import pageLogo from './assets/k.png'
 // import './App.css'
 
-function KudosCard(){
+function KudosBoards(){
+    
 
     return (
         <>
+       
+
         </>
     );
 
 };
 
-export default KudosCard
+export default KudosBoards
