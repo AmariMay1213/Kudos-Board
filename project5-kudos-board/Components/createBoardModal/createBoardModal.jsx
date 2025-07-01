@@ -20,7 +20,7 @@ function handleChange(value) {
 function createBoardModal({ showCreateBoardModal }) {
   return (
     <div className="createBoardInfo">
-      {/* showCreateBoardModal(true); */}
+      {showCreateBoardModal(true)}
 
       {/* Close button */}
       <div className="control">
