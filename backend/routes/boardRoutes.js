@@ -8,7 +8,17 @@ const controller = require("../controllers/boardController")
 
 
 router.get("/", controller.getAll);
+router.get("/:board_Id", controller.getById); 
+router.get("/:id/boards", controller.getAllUserBoards); 
 router.post("/", controller.create);
-router.delete("/:order_id", controller.remove);
+router.delete("/:board_Id", controller.removeById);
 
 module.exports = router;
+
+
+
+//  GET /boards — all boards
+//  GET /boards/:id — single board by ID
+//  POST /boards — create new board
+//  DELETE /boards/:id — delete board
+//  Optional: GET /users/:id/boards — all boards for a user
