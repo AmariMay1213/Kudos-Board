@@ -1,7 +1,7 @@
-import boardCard from "../boardCard/boardCard";
-import "./boardGrid.css";
+import BoardCard from "../BoardCard/BoardCard";
+import "./BoardGrid.css";
 
-function boardGrid({boards = [],}) {
+function BoardGrid({boards = [],}) {
   return (
     <div id="Buy" className="boardGrid">
       <div className="content">
@@ -12,7 +12,7 @@ function boardGrid({boards = [],}) {
             </div>
           ) : (
             boards.map((board) => (
-              <boardCard
+              <BoardCard
                 key={board.id}
                 board={board}
               />
@@ -24,4 +24,4 @@ function boardGrid({boards = [],}) {
   );
 }
 
-export default boardGrid;
+export default BoardGrid;

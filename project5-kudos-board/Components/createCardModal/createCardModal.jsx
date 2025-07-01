@@ -73,6 +73,15 @@ function createCardModal({ showCreateCardModal }) {
         </div>
 
 
+
+          {/* Search GIFS */}
+
+          
+
+
+
+
+
         {/* Author text box */}
         <div className="input-field">
           <label className="label">Owner</label>

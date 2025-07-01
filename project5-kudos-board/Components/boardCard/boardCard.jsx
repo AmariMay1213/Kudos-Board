@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import "./boardCard.css";
+import "./BoardCard.css";
 
-function boardCard({ board}) {
+function BoardCard({ board}) {
   return (
     <div className="boardCard">
 {/*      This is where the elements will be hypothetically   
@@ -37,4 +37,4 @@ function boardCard({ board}) {
   );
 }
 
-export default boardCard;
+export default BoardCard;
