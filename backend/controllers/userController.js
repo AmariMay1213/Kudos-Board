@@ -17,10 +17,17 @@ exports.getAll = async (req, res) => {
 exports.getUserById = async (req,res) =>{
      const id = Number(req.params.id);
 
+   
+
   const user = await prisma.user.findUnique({ where: { id } });
   if (!user) {
     return res.status(404).json({ error: "User not found!" });
   }
+
+  if (req.user.id !== id) {
+  return res.status(403).json({ error: "Unauthorized access" });
+}
+
   res.json(user);
 
 }; 
@@ -66,17 +73,17 @@ exports.userLogin = async (req,res) =>{
       res.status(400).json({error: "No email found, please register!"})
     }
 
-    passwordsMatch = await bcrypt.compare(password, existingUser.password); 
+    let passwordsMatch = await bcrypt.compare(password, existingUser.password); 
 
     if(!passwordsMatch){
       res.status(400).json({error: "Password incorrect, please try again!"})
     }
 
     const token = jwt.sign(
-      { id: existingUser.id }, process.env.JWT_SECRET, { expiresIn: '2h' }
+      { id: existingUser.id }, process.env.JWT_SECRET
     );
       
-    res.status(201).json({ token, existingUser: { id: existingUser.id, email: existingUser.email } }); 
+    res.status(201).json({ token }); 
 
   }catch(err){
     res.status(400).json({err})

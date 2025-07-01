@@ -5,7 +5,6 @@ const app = express();
 const { PrismaClient } = require('@prisma/client')
 const prisma = new PrismaClient()
 const morgan = require("morgan");
-// /Users/amari.may/codepath/UNIT-4/site-week4-student-store-starter/student-store-api/routes/studentStoreRoutes.js
 
 const boardRoutes = require("./routes/boardRoutes");
 const cardRoutes = require("./routes/cardRoutes");
