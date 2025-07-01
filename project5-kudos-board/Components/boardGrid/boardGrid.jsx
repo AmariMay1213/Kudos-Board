@@ -1,28 +1,20 @@
-import ProductCard from "../ProductCard/ProductCard";
-import "./ProductGrid.css";
+import boardCard from "../boardCard/boardCard";
+import "./boardGrid.css";
 
-function ProductGrid({
-  addToCart,
-  removeFromCart,
-  getQuantityOfItemInCart,
-  products = [],
-}) {
+function boardGrid({boards = [],}) {
   return (
-    <div id="Buy" className="ProductGrid">
+    <div id="Buy" className="boardGrid">
       <div className="content">
         <div className="grid">
-          {!products?.length ? (
+          {!boards?.length ? (
             <div className="card">
-              <p>No products available</p>
+              <p>No boards available</p>
             </div>
           ) : (
-            products.map((product) => (
-              <ProductCard
-                key={product.id}
-                product={product}
-                quantity={getQuantityOfItemInCart(product)}
-                addToCart={() => addToCart(product)}
-                removeFromCart={() => removeFromCart(product)}
+            boards.map((board) => (
+              <boardCard
+                key={board.id}
+                board={board}
               />
             ))
           )}
@@ -32,4 +24,4 @@ function ProductGrid({
   );
 }
 
-export default ProductGrid;
+export default boardGrid;
