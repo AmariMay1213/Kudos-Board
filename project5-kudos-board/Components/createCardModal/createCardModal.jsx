@@ -108,4 +108,4 @@ function createCardModal({ showCreateCardModal }) {
   );
 }
 
-export default createBoardModal;
+export default createCardModal;
