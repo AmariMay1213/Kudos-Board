@@ -57,12 +57,13 @@ exports.create = async (req, res) => {
 };
 
 exports.upvote = async (req,res) => {
-    const{upvote} =req.body; 
+    const{upVotes} =req.body; 
 
-    const upVotes = await prisma.card.create({
-        data: {upvote},
+    const upVote = await prisma.card.update({
+        data: {upVotes},
+        upVotes: {increment: 1}, 
     })
-
+    res.json(upVote); 
 }
 
 exports.removeById = async (req, res) => {

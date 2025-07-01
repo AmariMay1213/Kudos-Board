@@ -1,5 +1,7 @@
 
 const prisma = require("../models/user");
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 exports.getAll = async (req, res) => {
     try {
@@ -26,20 +28,59 @@ exports.getUserById = async (req,res) =>{
 exports.registerUser = async (req,res) =>{
     const {email, username, password} = req.body; 
 
+    try{
+
+    const existingUser = await prisma.user.findUnique({
+      where:{ email}, 
+    }); 
+
+    if(existingUser){
+      res.status(400).json({error: "Email already exists, please login"})
+    }
+
+     const hashedPassword = await bcrypt.hash(password, 10);
+
+
     const newUser = await prisma.user.create({
-        data: {email, username, password},
+        data: {email, password: hashedPassword, username},
     });
-    res.status(201).json(newUser); 
+    res.status(201).json({ user: { id: newUser.id, email: newUser.email } }); 
+
+    }catch(err){
+      res.status(400).json({err}); 
+    }
+
 
 }
 
 exports.userLogin = async (req,res) =>{
-    const {email, username, password} = req.body;
+    const {email, password} = req.body;
 
-    const login = await prisma.user.create({
-        data: {email, username, password}, 
-    });
-    res.status(201).json(login); 
+    try{
+
+      const existingUser = await prisma.user.findUnique({
+      where: {email}, 
+    }); 
+
+    if(!existingUser){
+      res.status(400).json({error: "No email found, please register!"})
+    }
+
+    passwordsMatch = await bcrypt.compare(password, existingUser.password); 
+
+    if(!passwordsMatch){
+      res.status(400).json({error: "Password incorrect, please try again!"})
+    }
+
+    const token = jwt.sign(
+      { id: existingUser.id }, process.env.JWT_SECRET, { expiresIn: '2h' }
+    );
+      
+    res.status(201).json({ token, existingUser: { id: existingUser.id, email: existingUser.email } }); 
+
+  }catch(err){
+    res.status(400).json({err})
+  }
 }
 
 

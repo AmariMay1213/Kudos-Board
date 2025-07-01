@@ -3,8 +3,43 @@
 const prisma = require("../models/board");
 
 exports.getAll = async (req, res) => {
+
+    const { category, sort } = req.query;
+
+    const filters = {};
+    const orderBy = [];
+
+    //this sorts by categories
+    if (category) {
+    filters.category = {
+      equals: category,
+      mode: "insensitive",
+    };
+  }
+
+  //this is for created_at
+
+  if(sort){
+    const [field, direction] = sort.split("_");
+
+    const validField = ["created_at"];
+    const validDirections = ["asc", "desc"];
+
+    if (validField.includes(field) && validDirections.includes(direction)) {
+      orderBy.push({ [field]: direction });
+    } else {
+      return res
+        .status(400)
+        .json({ error: "Invalid sort query. Use field_asc or field_desc." });
+    }
+   
+  }
+
     try {
-    const boards = await prisma.board.findMany();
+    const boards = await prisma.board.findMany({
+        where: filters,
+        orderBy: orderBy.length ? orderBy : undefined,
+    });
     res.json(boards);
   } catch (err) {
     console.error(err);
