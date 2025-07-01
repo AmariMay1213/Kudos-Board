@@ -47,10 +47,10 @@ exports.getById = async (req,res) => {
 
 
 exports.create = async (req, res) => {
-  const { title, description, gif_Url, author } = req.body;
+  const { title, description, gif_Url, author, board_Id } = req.body;
   
   const newCard = await prisma.card.create({
-    data: { title, description, gif_Url, author },
+    data: { title, description, gif_Url, author, board_Id },
   });
 
   res.status(201).json(newCard);

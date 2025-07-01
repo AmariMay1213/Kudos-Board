@@ -85,10 +85,10 @@ exports.getById = async (req,res) => {
 
 
 exports.create = async (req, res) => {
-  const { title, category, author } = req.body;
+  const { title, category, author, image_url } = req.body;
   
   const newBoard = await prisma.board.create({
-    data: { title, category, author },
+    data: { title, category, author, image_url },
   });
 
   res.status(201).json(newBoard);
