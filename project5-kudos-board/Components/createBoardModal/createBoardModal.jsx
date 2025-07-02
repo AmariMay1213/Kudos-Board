@@ -1,26 +1,26 @@
 import React, {useState, useEffect} from "react";
 import { Link } from "react-router-dom";
 import axios from "axios"
-import "./createBoardModal.css";
+import "./CreateBoardModal.css";
 
 
-const [input, setInput] = useState("")
 
-// Pass the information entered back to the component that called it
-function handleSubmit(){
+function CreateBoardModal({ boardInfo, setBoardInfo, showCreateBoardModal }) {
+  const [input, setInput] = useState("");
+  const [category, setCategory] = useState(null);
 
-}
+  // Pass the information entered back to the component that called it
+  function handleSubmit() {}
 
-function handleChange(value) {
-  setInput(value);
-}
+  function handleChange(value) {
+    setInput(value);
+  }
 
-// Send in the showCreateBoardModal setter, which allows for one to exit the modal upon submission
+  // Send in the showCreateBoardModal setter, which allows for one to exit the modal upon submission
 
-function createBoardModal({ showCreateBoardModal }) {
   return (
     <div className="createBoardInfo">
-      {/* showCreateBoardModal(true); */}
+      {showCreateBoardModal(true)}
 
       {/* Close button */}
       <div className="control">
@@ -37,8 +37,7 @@ function createBoardModal({ showCreateBoardModal }) {
         </button>
       </div>
 
-
-
+      {/* Form section for the create new board moda; */}
       <form onSubmit={handleSubmit}>
         <h2>Create a New Board</h2>
         {/* Title text box */}
@@ -60,32 +59,25 @@ function createBoardModal({ showCreateBoardModal }) {
         <div className="drop-down">
           <label className="label">Category:</label>
           <div className="control">
-            <select
-              className="input"
-              type="text"
-              value={input}
-              // onChange={(e) =>
-              //   setBoardInfo((u) => ({ ...u, title: e.target.value }))
-              // }
-            >
+            <select>
               <option>Select a category</option>
               <option
                 onChange={(e) =>
-                  setBoardInfo((u) => ({ ...u, category: e.target.value }))
+                  setBoardInfo((u) => ({ ...u, category: "Celebration" }))
                 }
               >
                 Celebration
               </option>
               <option
                 onChange={(e) =>
-                  setBoardInfo((u) => ({ ...u, category: e.target.value }))
+                  setBoardInfo((u) => ({ ...u, category: "Thank You" }))
                 }
               >
                 Thank You
               </option>
               <option
                 onChange={(e) =>
-                  setBoardInfo((u) => ({ ...u, category: e.target.value }))
+                  setBoardInfo((u) => ({ ...u, category: "Inspiration" }))
                 }
               >
                 Inspiration
@@ -128,4 +120,4 @@ function createBoardModal({ showCreateBoardModal }) {
   );
 }
 
-export default createBoardModal;
+export default CreateBoardModal;

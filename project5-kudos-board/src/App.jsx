@@ -1,22 +1,32 @@
 import pageLogo from "./assets/k.png";
 import "./App.css";
 import HomePage from "../Components/HomePage/HomePage";
+// import KudosBoards from "../Components/KudosBoards/KudosBoards"
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
     <>
-      <header className="header">
-        <div className="headerLogo">
-          <img src={pageLogo} alt={"Page Logo"} />
+      <BrowserRouter>
+        <div className="header">
+          <header className="headerLogo">
+            <img src={pageLogo} alt={"Page Logo"} />
+          </header>
         </div>
-      </header>
-      <main>
-        {/* main content here */}
-        <HomePage />
-      </main>
-      <footer>
-        <p>&copy; 2025 Kudos Board</p>
-      </footer>
+        <main>
+          <Routes>
+          {/* main content here */}
+          <Route path="/" element = {<HomePage/>} />
+          {/* TODO: below, add the actual route the amari makes to specifically get information for one board */}
+          {/* <Route path="/boards" element = {<KudosBoardCards/>} />  */}
+          </Routes>
+        </main>
+
+        <footer>
+          <p>&copy; 2025 Kudos Board</p>
+        </footer>
+
+      </BrowserRouter>
     </>
   );
 }
