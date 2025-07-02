@@ -17,8 +17,8 @@ function CardCard({ card }) {
 
       <div className="card-info">
         <div className="info">
-          <p className="card-name">{card.name}</p>
-          <p className="card-category">{card.category}</p>
+          <p className="card-name">{card.title}</p>
+          <p className="card-description">{card.description}</p>
         </div>
         <div className="actions">
           <div className="buttons">
