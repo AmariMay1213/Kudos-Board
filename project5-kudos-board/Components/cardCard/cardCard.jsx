@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import "./CardCard.css";
 
 //Adding a comment so that there is something to commit
+//Seeing if I can do a pull request from this
 
 function CardCard({ card }) {
   return (
