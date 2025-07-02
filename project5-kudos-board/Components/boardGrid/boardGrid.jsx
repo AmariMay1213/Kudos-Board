@@ -4,7 +4,7 @@ import "./BoardGrid.css";
 
 function BoardGrid({boards = [],}) {
   return (
-    <div id="Buy" className="boardGrid">
+    <div id="Buy" className="BoardGrid">
       <div className="content">
         <div className="grid">
           {!boards?.length ? (
