@@ -1,0 +1,20 @@
+
+
+const express = require("express")
+const router = express.Router();
+const controller = require("../controllers/userController")
+const authenticateToken = require('../middleware/auth');
+
+// setup all routes
+
+
+router.get("/", controller.getAll);
+router.get("/:id", controller.getUserById); 
+router.get("/:id", authenticateToken, controller.getUserById);
+router.post("/register", controller.registerUser);
+router.post("/login", controller.userLogin)
+router.delete("/:id", controller.removeUser);
+
+
+module.exports = router;
+
