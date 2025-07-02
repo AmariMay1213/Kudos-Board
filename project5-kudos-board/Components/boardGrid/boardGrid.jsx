@@ -1,7 +1,7 @@
 import BoardCard from "../BoardCard/BoardCard";
 import "./BoardGrid.css";
 
-\
+
 function BoardGrid({boards = [],}) {
   return (
     <div id="Buy" className="boardGrid">
@@ -14,7 +14,7 @@ function BoardGrid({boards = [],}) {
           ) : (
             boards.map((board) => (
               <BoardCard
-                key={board.id}
+                key={board.board_Id}
                 board={board}
               />
             ))
