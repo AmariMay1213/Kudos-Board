@@ -1,28 +1,31 @@
 import { Link } from "react-router-dom";
+import no_image from "../../src/assets/no_image.jpeg";
 import "./BoardCard.css";
 
-function BoardCard({ board}) {
+function BoardCard({board}) {
   return (
-    <div className="boardCard">
-{/*      This is where the elements will be hypothetically   
+    <div className="BoardCard">
+
+    {/* Image */}
       <div className="media">
-        <Link to={`/${product.id}`}>
-          {product.image_url ? (
-            <img src={product.image_url} alt="product cover" />
+        <Link to={`/${board.board_Id}`}>
+          {board.image_url ? (
+            <img src={board.image_url} alt="board cover" />
           ) : (
-            <img src={codepath} alt="product cover" />
+            <img src={no_image} alt="board cover" />
           )}
         </Link>
-      </div> */}
+      </div>
 
       <div className="board-info">
         <div className="info">
-          <p className="board-name">{board.name}</p>
+          <p className="board-name">{board.title}</p>
           <p className="board-category">{board.category}</p>
         </div>
         <div className="actions">
           <div className="buttons">
 
+            {/* Need to add a click that brings the user to the card route whenever they click view board */}
             <i className="material-icons">
               View Board
             </i>
