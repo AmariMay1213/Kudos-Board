@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import "./CardCard.css";
 
+//Adding a comment so that there is something to commit
+
 function CardCard({ card }) {
   return (
     <div className="cardCard">
