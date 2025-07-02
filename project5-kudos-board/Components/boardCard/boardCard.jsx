@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import no_image from "../../src/assets/no_image.jpeg";
 import "./BoardCard.css";
 
+//Making this comment, so that the file names can change.
+
 function BoardCard({board}) {
   return (
     <div className="BoardCard">
