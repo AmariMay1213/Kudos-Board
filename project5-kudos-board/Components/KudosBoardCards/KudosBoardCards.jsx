@@ -1,6 +1,7 @@
 // import pageLogo from './assets/k.png'
 // import './App.css'
 import { useNavigate } from "react-router-dom";
+//THIS IS FOR WHEN YOU PRESS A BOARD ON THE HOME PAGE WANT TO LOOK AT SPECIFIC CARDS OF THAT BOARD
 
 function KudosBoardCards(){
     // back button to home page
@@ -31,6 +32,7 @@ function KudosBoardCards(){
         </div>
         <div>
             {/* container for cards */}
+
         </div>
 
         </>
