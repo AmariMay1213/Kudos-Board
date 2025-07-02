@@ -1,6 +1,7 @@
-import BoardCard from "./BoardCard/BoardCard";
+import BoardCard from "../BoardCard/BoardCard";
 import "./BoardGrid.css";
 
+\
 function BoardGrid({boards = [],}) {
   return (
     <div id="Buy" className="boardGrid">
