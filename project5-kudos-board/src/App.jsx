@@ -146,6 +146,7 @@ function App() {
   };
 
   const createBoard = async (newBoard) => {
+    console.log(newBoard)
     try {
       const { data } = await axios.post(
         "http://localhost:3000/boards",

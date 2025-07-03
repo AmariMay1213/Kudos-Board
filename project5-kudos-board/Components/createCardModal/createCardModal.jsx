@@ -4,30 +4,25 @@ import axios from "axios"
 import "./CreateCardModal.css";
 
 
-function CreateCardModal({ cardInfo, setCardInfo, show, setShowCreateCardModal, addCard}) {
+function CreateCardModal({ cardInfo, setCardInfo, show, setShowCreateCardModal, createCard}) {
 
   if (!show) return null;
 
   const [input, setInput] = useState("");
 
 
-
-
-
   // Pass the information entered back to the component that called it
-  function handleSubmit() {
-
-    console.log("submitting cardInfo", cardInfo);
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!cardInfo.title || !cardInfo.description || !cardInfo.author) {
       alert("Please fill in all fields.");
       return;
     }
-    addCard(cardInfo);
-    setCardInfo({});
-    setShowCreateCardModal(false);
-
-  }
+    await createCard(cardInfo).then(() => {
+      setCardInfo({});
+      setShowCreateCardModal(false);
+    });
+  };
 
   // Send in the showCreateCardModal setter, which allows for one to exit the modal upon submission
 
