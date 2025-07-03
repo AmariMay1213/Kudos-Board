@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import no_image from "../../src/assets/no_image.jpeg";
 import "./CardCard.css";
 
 //Adding a comment so that there is something to commit
@@ -7,16 +8,16 @@ import "./CardCard.css";
 function CardCard({ card }) {
   return (
     <div className="cardCard">
-      {/*      This is where the gif will be hypothetically   
       <div className="media">
-        <Link to={`/${product.id}`}>
-          {product.image_url ? (
-            <img src={product.image_url} alt="product cover" />
+        <Link to={`/${card.card_Id}`}>
+          {card.gif_Url ? (
+            <img src={card.gif_Url} alt="card cover" />
           ) : (
-            <img src={codepath} alt="product cover" />
+            <img src={no_image} alt="card cover" />
           )}
         </Link>
-      </div> */}
+      </div>
+
 
       <div className="card-info">
         <div className="info">

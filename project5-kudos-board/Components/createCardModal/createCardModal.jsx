@@ -4,17 +4,37 @@ import axios from "axios"
 import "./CreateCardModal.css";
 
 
-function CreateCardModal({ showCreateCardModal }) {
+function CreateCardModal({ cardInfo, setBoardInfo, show, setShowCreateCardModal, addCard}) {
+
+  if (!show) return null;
+
   const [input, setInput] = useState("");
 
-  // Pass the information entered back to the component that called it
-  function handleSubmit() {}
 
-  function handleChange(value) {
-    setInput(value);
+
+  function createBoard() {
+    console.log("create fard function");
+    addCard(cardInfo);
+    setCardInfo({});
+    setShowCreateCardModal(false);
   }
 
-  // function to close modal
+
+
+  // Pass the information entered back to the component that called it
+  function handleSubmit() {
+
+    console.log("submitting cardInfo", cardInfo);
+    e.preventDefault();
+    if (!cardInfo.title || !cardInfo.description || !cardInfo.author) {
+      alert("Please fill in all fields.");
+      return;
+    }
+    addCard(cardInfo);
+    setCardInfo({});
+    setShowCreateCardModal(false);
+
+  }
 
   // Send in the showCreateCardModal setter, which allows for one to exit the modal upon submission
 
@@ -48,7 +68,7 @@ function CreateCardModal({ showCreateCardModal }) {
               placeholder="Enter card title"
               className="input"
               type="text"
-              value={input}
+              value={cardInfo.title || ""}
               onChange={(e) =>
                 setCardInfo((u) => ({ ...u, title: e.target.value }))
               }
@@ -64,7 +84,7 @@ function CreateCardModal({ showCreateCardModal }) {
               placeholder="Enter card description"
               className="input"
               type="text"
-              value={input}
+              value={cardInfo.description || ""}
               onChange={(e) =>
                 setCardInfo((u) => ({ ...u, description: e.target.value }))
               }
@@ -82,7 +102,7 @@ function CreateCardModal({ showCreateCardModal }) {
               placeholder="Enter owner (optional)"
               className="input"
               type="text"
-              value={input}
+              value={cardInfo.author || ""}
               onChange={(e) =>
                 setCardInfo((u) => ({ ...u, author: e.target.value }))
               }
@@ -94,12 +114,7 @@ function CreateCardModal({ showCreateCardModal }) {
         <div className="control">
           <button
             className="button"
-            type="button"
-            onClick={() => {
-              setInput("");
-              showCreateCardModal(false);
-              // Function to close modal here
-            }}
+            type="submit"
           >
             Create Card
           </button>
