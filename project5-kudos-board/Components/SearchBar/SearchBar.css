@@ -1,9 +1,9 @@
 .search-bar {
     position: fixed;
-    top: 230px; /* This should match the height + padding of your header */
+    top: 360px; /*This should match the height + padding of your header */
 
 
-    background-color: #000000;
+    background-color: #f9dafe;
     padding: 10px;
     border-radius: 8px;
     display: flex;
@@ -27,10 +27,10 @@
 .search-bar button {
     border-radius: 4px;
     cursor: pointer;
-    background-color: #8800a3;
+    background-color: #f9dafe;
     color: white;
 }
 
 .search-bar button:hover {
-    background-color: #aa33cc;
+    background-color: #f9dafe;
 }

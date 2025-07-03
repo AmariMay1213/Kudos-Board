@@ -1,8 +1,8 @@
 .card-options-bar {
     position: fixed;
-    top: 300px;
+    top: 420px;
 
-    background-color: #000000;
+    background-color: #f9dafe;
     padding: 10px;
     border-radius: 8px;
     display: flex;
@@ -19,9 +19,8 @@
 
 .create-board-button {
 position: fixed;
-    top: 370px;
-
-    background-color: #000000;
+    top: 480px;
+    background-color: #f9dafe;
     padding: 10px;
     border-radius: 8px;
     display: flex;
@@ -48,5 +47,5 @@ position: fixed;
 }
 
 .search-bar button:hover {
-    background-color: #aa33cc;
+    background-color: #f9dafe;
 }
