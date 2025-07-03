@@ -47,7 +47,7 @@ exports.getById = async (req,res) => {
 
 exports.create = async (req, res) => {
   const { title, description, gif_Url, board_Id, author } = req.body;
-  const user_Id = req.user?.id ?? null; // support optional association
+  // const user_Id = req.user?.id ?? null; // support optional association
 
   try {
     const newCard = await prisma.card.create({
@@ -57,7 +57,7 @@ exports.create = async (req, res) => {
         gif_Url,
         board_Id,
         author,
-        user_Id, // if logged in, associate; else leave null
+        // user_Id, // if logged in, associate; else leave null
       },
     });
     res.status(201).json(newCard);
