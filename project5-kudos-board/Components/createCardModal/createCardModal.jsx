@@ -4,20 +4,13 @@ import axios from "axios"
 import "./CreateCardModal.css";
 
 
-function CreateCardModal({ cardInfo, setBoardInfo, show, setShowCreateCardModal, addCard}) {
+function CreateCardModal({ cardInfo, setCardInfo, show, setShowCreateCardModal, addCard}) {
 
   if (!show) return null;
 
   const [input, setInput] = useState("");
 
 
-
-  function createBoard() {
-    console.log("create fard function");
-    addCard(cardInfo);
-    setCardInfo({});
-    setShowCreateCardModal(false);
-  }
 
 
 
