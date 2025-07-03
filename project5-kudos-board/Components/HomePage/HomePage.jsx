@@ -11,7 +11,7 @@ import BoardGrid from "../boardGrid/boardGrid";
 import CreateBoardModal from "../CreateBoardModal/CreateBoardModal";
 
 
-function HomePage() {
+function HomePage({boards, createBoard, deleteBoard, user}) {
   // needs a search bar with a search and clear
   // needs a nav bar with -- all, recent and our other categories : celebration, thank you, inspiration
   // create new board button
@@ -22,6 +22,10 @@ function HomePage() {
     const [showCreateBoardModal, setShowCreateBoardModal] = useState(false);
 
     const addBoard = (newBoard) => {
+      const completeBoard = {
+        ...newBoard, user_Id: newBoard.user_Id || user?.id,
+      };
+      createBoard(completeBoard);
       setKudosBoards((prev) => [
         ...prev,
         { ...newBoard, board_Id: Date.now() }, // Ensure unique board_Id
@@ -31,6 +35,7 @@ function HomePage() {
   return (
     <>
       <SearchBar setKudosBoards={setKudosBoards} />
+
       <OptionsBar
       setKudosBoards={setKudosBoards} 
       setShowCreateBoardModal = {setShowCreateBoardModal}
@@ -41,13 +46,14 @@ function HomePage() {
       {/* TODO: lets double check this line, should be a div just for the kudos boards to be listed in a grid, but you never know */}
       <BoardGrid kudosBoards={kudosBoards} />
       
-      <CreateBoardModal
+      {showCreateBoardModal &&
+      (<CreateBoardModal
         boardInfo={boardInfo}
         setBoardInfo={setBoardInfo}
         show = {showCreateBoardModal}
         setShowCreateBoardModal={setShowCreateBoardModal}
         addBoard={addBoard}
-      />
+      />)}
 
     </>
   );

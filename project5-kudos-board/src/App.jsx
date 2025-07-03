@@ -196,7 +196,7 @@ const filteredBoards = showOnlyUserBoards
 
   return (
     <>
-      <BrowserRouter>
+      <>
         <div className="header">
           <header className="headerLogo">
             <img src={pageLogo} alt={"Page Logo"} />
@@ -204,42 +204,43 @@ const filteredBoards = showOnlyUserBoards
         </div>
         <main>
           <Routes>
-          {/* main content here */}
-            <Route path="/boards/:board_Id" element={<KudosBoardCards boards={boards} />} />
-           <Route
-             path="/"
-             element={
-            
-              <HomePage
-               boards={filteredBoards}
-              user = {user}
-             createBoard={createBoard}
-             deleteBoard={deleteBoard}
-           />
-                     }
+            {/* main content here */}
+            <Route
+              path="/boards/:board_Id"
+              element={<KudosBoardCards boards={boards} />}
+            />
+            <Route
+              path="/"
+              element={
+                <HomePage
+                  boards={filteredBoards}
+                  user={user}
+                  createBoard={createBoard}
+                  deleteBoard={deleteBoard}
+                />
+              }
             />
 
             <Route
-               path="/boards/:board_Id"
-                element={
-             <KudosBoardCards
-                cards={cards}
-                 createCard={createCard}
-                 deleteCard={deleteCard}
-             />
-             }
-              />
+              path="/boards/:board_Id"
+              element={
+                <KudosBoardCards
+                  cards={cards}
+                  createCard={createCard}
+                  deleteCard={deleteCard}
+                />
+              }
+            />
 
-          {/* TODO: below, add the actual route the amari makes to specifically get information for one board */}
-          {/* <Route path="/boards" element = {<KudosBoardCards/>} />  */}
+            {/* TODO: below, add the actual route the amari makes to specifically get information for one board */}
+            {/* <Route path="/boards" element = {<KudosBoardCards/>} />  */}
           </Routes>
         </main>
 
         <footer>
           <p>&copy; 2025 Kudos Board</p>
         </footer>
-
-      </BrowserRouter>
+      </>
     </>
   );
 }
