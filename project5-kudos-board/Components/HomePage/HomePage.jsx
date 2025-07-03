@@ -10,7 +10,7 @@ import OptionsBar from "../OptionsBar/OptionsBar";
 import BoardGrid from "../boardGrid/boardGrid";
 import CreateBoardModal from "../CreateBoardModal/CreateBoardModal";
 
-function HomePage({ boards, createBoard, deleteBoard }) {
+function HomePage({ boards, createBoard, deleteBoard, categories, handleFilterByCategory, handleRecentSort}) {
   // needs a search bar with a search and clear
   // needs a nav bar with -- all, recent and our other categories : celebration, thank you, inspiration
   // create new board button
@@ -25,9 +25,13 @@ function HomePage({ boards, createBoard, deleteBoard }) {
       <SearchBar />
 
       <OptionsBar
-        setShowCreateBoardModal={setShowCreateBoardModal}
+       setShowCreateBoardModal={setShowCreateBoardModal}
         setBoardInfo={setBoardInfo}
-      />
+        handleRecentSort={handleRecentSort}                 
+      handleFilterByCategory={handleFilterByCategory}     
+      categories={categories}                             
+    />
+
 
       {/* TODO: lets double check this line, should be a div just for the kudos boards to be listed in a grid, but you never know */}
       <BoardGrid kudosBoards={boards} />
@@ -39,6 +43,7 @@ function HomePage({ boards, createBoard, deleteBoard }) {
           show={showCreateBoardModal}
           setShowCreateBoardModal={setShowCreateBoardModal}
           createBoard={createBoard}
+          categories={categories}
         />
       )}
     </>
