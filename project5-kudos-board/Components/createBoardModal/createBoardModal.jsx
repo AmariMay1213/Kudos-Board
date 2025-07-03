@@ -2,13 +2,20 @@ import React, {useState, useEffect} from "react";
 import { Link } from "react-router-dom";
 import axios from "axios"
 import "./CreateBoardModal.css";
+import BoardCard from "../boardCard/boardCard";
 
 
 
-function CreateBoardModal({ boardInfo, setBoardInfo, showCreateBoardModal }) {
+function CreateBoardModal({ boardInfo, setBoardInfo, showCreateBoardModal, addBoard }) {
   const [input, setInput] = useState("");
   const [category, setCategory] = useState(null);
 
+  function createBoard () {
+    addBoard(boardInfo);
+    setBoardInfo({});
+    showCreateBoardModal(false);
+  }
+  
   // Pass the information entered back to the component that called it
   function handleSubmit() {}
 
@@ -47,7 +54,7 @@ function CreateBoardModal({ boardInfo, setBoardInfo, showCreateBoardModal }) {
             <input
               className="input"
               type="text"
-              value={input}
+              value={boardInfo.title || ""}
               onChange={(e) =>
                 setBoardInfo((u) => ({ ...u, title: e.target.value }))
               }
@@ -93,7 +100,7 @@ function CreateBoardModal({ boardInfo, setBoardInfo, showCreateBoardModal }) {
             <input
               className="input"
               type="text"
-              value={input}
+              value={boardInfo.author || ""}
               onChange={(e) =>
                 setBoardInfo((u) => ({ ...u, author: e.target.value }))
               }
@@ -106,11 +113,7 @@ function CreateBoardModal({ boardInfo, setBoardInfo, showCreateBoardModal }) {
           <button
             className="button"
             type="button"
-            onClick={() => {
-              setInput("");
-              showCreateBoardModal(false);
-              // Function to close modal here
-            }}
+            onClick={createBoard()}
           >
             Create Board
           </button>
