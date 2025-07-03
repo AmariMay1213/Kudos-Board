@@ -1,4 +1,4 @@
-import BoardCard from "../BoardCard/BoardCard";
+import BoardCard from "../boardCard/boardCard";
 import "./BoardGrid.css";
 
 
