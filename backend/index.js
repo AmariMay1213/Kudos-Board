@@ -8,7 +8,7 @@ const morgan = require("morgan");
 
 const boardRoutes = require("./routes/boardRoutes");
 const cardRoutes = require("./routes/cardRoutes");
-const userRoutes = require("./routes/userRoutes"); 
+// const userRoutes = require("./routes/userRoutes"); 
 
 
 app.use(express.json());
@@ -18,7 +18,7 @@ app.use(cors());
 
 
 
-app.use("/users", userRoutes);
+// app.use("/users", userRoutes);
 app.use("/boards", boardRoutes ); 
 app.use("/cards", cardRoutes); 
 

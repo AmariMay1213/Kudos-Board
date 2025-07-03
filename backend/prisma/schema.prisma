@@ -24,11 +24,6 @@ model Card{
   upVotes  Int   @default(0)
 
   board Board @relation(fields: [board_Id], references: [board_Id], onDelete:Cascade)
-  user_Id  Int?
-  user     User? @relation("UserCards", fields: [user_Id], references: [id])
-
-
-
 }
 
 model Board{
@@ -40,17 +35,6 @@ model Board{
   created_at   DateTime     @default(now())
 
   cards     Card[]
-  user_Id   Int
-  user      User?  @relation("UserBoards", fields: [user_Id], references: [id])
-
 }
 
-model User {
-  id       Int      @id @default(autoincrement())
-  email    String   @unique
-  username String?
-  password String
 
-  boards   Board[]  @relation("UserBoards")
-  cards    Card[]   @relation("UserCards")
-}

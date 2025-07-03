@@ -9,7 +9,7 @@ const controller = require("../controllers/boardController")
 
 router.get("/", controller.getAll);
 router.get("/:board_Id", controller.getById); 
-router.get("/:id/boards", controller.getAllUserBoards); 
+// router.get("/:id/boards", controller.getAllUserBoards); 
 router.post("/", controller.create);
 router.delete("/:board_Id", controller.removeById);
 
