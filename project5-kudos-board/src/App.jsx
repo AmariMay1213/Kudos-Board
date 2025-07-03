@@ -160,12 +160,12 @@ function App() {
   };
 
   const deleteBoard = async (board_Id) => {
-    // const boardToDelete = boards.find((b) => b.board_Id === board_Id);
+    const boardToDelete = boards.find((b) => b.board_Id === board_Id);
 
-    // if (!user || !boardToDelete || boardToDelete.user_Id !== user.id) {
-    //   console.warn("You do not have permission to delete this board.");
-    //   return;
-    // }
+    if (!boardToDelete) {
+      console.warn("You do not have permission to delete this board.");
+      return;
+    }
 
     try {
       await axios.delete(`http://localhost:3000/boards/${board_Id}`);
@@ -175,10 +175,6 @@ function App() {
       console.log("Error deleting board:", err);
     }
   };
-
-  // const filteredBoards = showOnlyUserBoards
-  //   ? boards.filter((board) => board.user_Id === user?.id)
-  //   : boards;
 
   return (
     <>

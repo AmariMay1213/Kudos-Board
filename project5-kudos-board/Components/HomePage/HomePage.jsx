@@ -38,7 +38,7 @@ function HomePage({ boards, createBoard, deleteBoard }) {
           setBoardInfo={setBoardInfo}
           show={showCreateBoardModal}
           setShowCreateBoardModal={setShowCreateBoardModal}
-          addBoard={addBoard}
+          createBoard={createBoard}
         />
       )}
     </>

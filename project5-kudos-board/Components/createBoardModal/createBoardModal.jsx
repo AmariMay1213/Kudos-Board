@@ -1,35 +1,31 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios"
+import axios from "axios";
 import "./CreateBoardModal.css";
 import BoardCard from "../boardCard/boardCard";
 
-
-
-function CreateBoardModal({ boardInfo, setBoardInfo, show,setShowCreateBoardModal, addBoard }) {
+function CreateBoardModal({
+  boardInfo,
+  setBoardInfo,
+  show,
+  setShowCreateBoardModal,
+  createBoard,
+}) {
   if (!show) return null;
 
   const [input, setInput] = useState("");
 
-
-  function createBoard () {
-    console.log("create board function");
-    addBoard(boardInfo);
-    setBoardInfo({});
-    setShowCreateBoardModal(false);
-  }
-  
   // Pass the information entered back to the component that called it
-  const handleSubmit = (e) => {
-    console.log("submitting boardInfo", boardInfo)
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!boardInfo.title || !boardInfo.category || !boardInfo.author) {
       alert("Please fill in all fields.");
       return;
     }
-    addBoard(boardInfo);
-    setBoardInfo({});
-    setShowCreateBoardModal(false);
+    await createBoard(boardInfo).then(() => {
+      setBoardInfo({});
+      setShowCreateBoardModal(false);
+    });
   };
 
   // Send in the showCreateBoardModal setter, which allows for one to exit the modal upon submission
@@ -104,7 +100,7 @@ function CreateBoardModal({ boardInfo, setBoardInfo, show,setShowCreateBoardModa
 
         {/* Create board button */}
         <div className="control">
-          <button className="button" type="submit" >
+          <button className="button" type="submit">
             Create Board
           </button>
         </div>
