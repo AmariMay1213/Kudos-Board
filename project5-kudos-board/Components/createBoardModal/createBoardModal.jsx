@@ -10,6 +10,7 @@ function CreateBoardModal({
   show,
   setShowCreateBoardModal,
   createBoard,
+  categories,
 }) {
   if (!show) return null;
 
@@ -75,10 +76,12 @@ function CreateBoardModal({
                 setBoardInfo((u) => ({ ...u, category: e.target.value }))
               }
             >
-              <option value="">Select a category</option>
-              <option value="Celebration">Celebration</option>
-              <option value="Thank You">Thank You</option>
-              <option value="Inspiration">Inspiration</option>
+              {categories.map((category) => (
+               <option key={category} value={category}>
+              {category}
+                  </option>
+                ))}
+
             </select>
           </div>
         </div>

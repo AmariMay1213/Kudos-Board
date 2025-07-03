@@ -53,6 +53,12 @@ exports.getById = async (req, res) => {
   res.json(board);
 };
 
+exports.getCategories = (req, res) => {
+  const categories = ["Celebration", "Thank You", "Inspiration"];
+  res.json({ categories });
+};
+
+
 exports.create = async (req, res) => {
   console.log("THIS IS OUR BODY", req.body);
   const { title, category, image_url = "", author } = req.body;

@@ -10,7 +10,7 @@ import OptionsBar from "../OptionsBar/OptionsBar";
 import BoardGrid from "../boardGrid/boardGrid";
 import CreateBoardModal from "../CreateBoardModal/CreateBoardModal";
 
-function HomePage({ boards, createBoard, deleteBoard }) {
+function HomePage({ boards, createBoard, deleteBoard, categories}) {
   // needs a search bar with a search and clear
   // needs a nav bar with -- all, recent and our other categories : celebration, thank you, inspiration
   // create new board button

@@ -12,6 +12,7 @@ function App() {
   const [boards, setBoards] = useState([]);
   const [cards, setCards] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [categories, setCategories] = useState([]); 
   //   const [error, setError] = useState(null)
   //   const [user, setUser] = useState(null);
   //   const [token, setToken] = useState("");
@@ -117,6 +118,21 @@ function App() {
     fetchCards();
   }, []);
 
+  useEffect(()=>{
+    const fetchCategories = async () => {
+      try{
+        const {data} = await axios.get(`http://localhost:3000/boards/categories`);
+        console.log(data);
+        setCategories(data.categories);
+        console.log("Fetched Board for this category: ", data.categories); 
+      }catch(err){
+        console.error("Error grabbing cards from that category: ", err); 
+      }
+
+    };
+    fetchCategories(); 
+  }, []); 
+
   const createCard = async (newCard) => {
     try {
       const payload = {
@@ -195,6 +211,7 @@ function App() {
                   // user={user}
                   createBoard={createBoard}
                   deleteBoard={deleteBoard}
+                  categories={categories}
                 />
               }
             />
