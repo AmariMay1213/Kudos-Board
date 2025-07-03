@@ -83,19 +83,43 @@ exports.getById = async (req,res) => {
   res.json(board);
 }
 
-
 exports.create = async (req, res) => {
-  const { title, category, author, image_url } = req.body;
-  
-  const newBoard = await prisma.board.create({
-    data: { title, category, author, image_url },
-  });
+  const { title, category, image_url, author } = req.body;
+  const user_Id = req.user.id; // pulled from the token via middleware
 
-  res.status(201).json(newBoard);
+  try {
+    const board = await prisma.board.create({
+      data: {
+        title,
+        category,
+        image_url,
+        author,
+        user_Id, 
+      },
+    });
+    res.status(201).json(board);
+  } catch (err) {
+    res.status(400).json({ error: "Failed to create board" });
+  }
 };
 
+
 exports.removeById = async (req, res) => {
+
  const board_Id = Number(req.params.board_Id);
+
+  // Get the board from the database
+  const board = await prisma.board.findUnique({ where: { board_Id } });
+
+  if (!board) {
+    return res.status(404).json({ error: "Board not found" });
+  }
+
+  // Make sure the logged-in user owns the board
+  if (board.user_Id !== req.user.board_Id) {
+    return res.status(403).json({ error: "Unauthorized: You can only delete your own boards" });
+  }
+
   await prisma.board.delete({ where: { board_Id } });
   res.status(204).end();
 };

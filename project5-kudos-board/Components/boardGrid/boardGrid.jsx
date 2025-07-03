@@ -1,19 +1,18 @@
-// import BoardCard from "../BoardCard/BoardCard";
 import BoardCard from "../boardCard/boardCard";
 import "./BoardGrid.css";
 
 
-function BoardGrid({boards = [],}) {
+function BoardGrid({kudosBoards = [],}) {
   return (
     <div id="Buy" className="BoardGrid">
       <div className="content">
         <div className="grid">
-          {!boards?.length ? (
+          {!kudosBoards?.length ? (
             <div className="card">
               <p>No boards available</p>
             </div>
           ) : (
-            boards.map((board) => (
+            kudosBoards.map((board) => (
               <BoardCard
                 key={board.board_Id}
                 board={board}

@@ -40,7 +40,7 @@ model Board{
   created_at   DateTime     @default(now())
 
   cards     Card[]
-  user_Id   Int? 
+  user_Id   Int
   user      User?  @relation("UserBoards", fields: [user_Id], references: [id])
 
 }
