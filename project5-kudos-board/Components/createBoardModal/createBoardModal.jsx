@@ -101,7 +101,6 @@ function CreateBoardModal({ boardInfo, setBoardInfo, show,setShowCreateBoardModa
             />
           </div>
         </div>
-
         {/* Create board button */}
         <div className="control">
           <button className="button" type="submit" >
