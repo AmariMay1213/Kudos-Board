@@ -45,16 +45,27 @@ exports.getById = async (req,res) => {
   res.json(card);
 }
 
-
 exports.create = async (req, res) => {
-  const { title, description, gif_Url, author, board_Id } = req.body;
-  
-  const newCard = await prisma.card.create({
-    data: { title, description, gif_Url, author, board_Id },
-  });
+  const { title, description, gif_Url, board_Id, author } = req.body;
+  const user_Id = req.user?.id ?? null; // support optional association
 
-  res.status(201).json(newCard);
+  try {
+    const newCard = await prisma.card.create({
+      data: {
+        title,
+        description,
+        gif_Url,
+        board_Id,
+        author,
+        user_Id, // if logged in, associate; else leave null
+      },
+    });
+    res.status(201).json(newCard);
+  } catch (err) {
+    res.status(400).json({ error: "Failed to create card" });
+  }
 };
+
 
 exports.upvote = async (req, res) => {
   const card_Id = Number(req.params.card_Id);

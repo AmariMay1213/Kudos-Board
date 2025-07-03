@@ -4,7 +4,6 @@ import HomePage from "../Components/HomePage/HomePage";
 // import KudosBoards from "../Components/KudosBoards/KudosBoards"
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
 import axios from "axios";
 import KudosBoards from "../Components/KudosBoards/KudosBoards";
 import KudosBoardCards from "../Components/KudosBoardCards/KudosBoardCards";
@@ -19,9 +18,8 @@ function App() {
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(""); 
   const navigate = useNavigate();
-  const userBoards = user ? boards.filter(board => board.user_Id === user.id) : [];
-
-
+const [showOnlyUserBoards, setShowOnlyUserBoards] = useState(false);
+  
 
   const handleLogin = async (email, password) => {
   try {
@@ -133,12 +131,13 @@ const handleLogout = () => {
 
 const createCard = async (newCard) => {
   try {
-    const { data } = await axios.post(`http://localhost:3000/cards/`, {
+    const payload = {
       ...newCard,
-      user_Id: user?.id || null  
-    });
-    setCards((prev) => [...prev, data]); 
-    //prev is the past array before the new card is added
+      user_Id: user?.id || null, // Add the logged-in user’s ID if available
+    };
+
+    const { data } = await axios.post(`http://localhost:3000/cards/`, payload);
+    setCards((prev) => [...prev, data]);
     console.log("Created card: ", data);
   } catch (err) {
     console.log("Error creating card: ", err);
@@ -159,10 +158,11 @@ const createCard = async (newCard) => {
 
 const createBoard = async (newBoard) => {
   try {
-    const { data } = await axios.post(`http://localhost:3000/boards/`, {
-      ...newBoard,
-      user_Id: user?.id || null  
-    });
+    const { data } = await axios.post("http://localhost:3000/boards", newBoard, {
+     headers: {
+    Authorization: `Bearer ${token}`,
+      },
+        });
     setBoards((prev) => [...prev, data]); 
     console.log("Created board: ", data);
   } catch (err) {
@@ -189,13 +189,9 @@ const createBoard = async (newBoard) => {
   }
 };
 
-
-
-
-
-
-
-
+const filteredBoards = showOnlyUserBoards
+  ? boards.filter((board) => board.user_Id === user?.id)
+  : boards;
 
 
   return (
@@ -213,9 +209,10 @@ const createBoard = async (newBoard) => {
            <Route
              path="/"
              element={
+            
               <HomePage
-               boards={boards}
-              userBoards={userBoards} 
+               boards={filteredBoards}
+              user = {user}
              createBoard={createBoard}
              deleteBoard={deleteBoard}
            />
