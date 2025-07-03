@@ -2,26 +2,39 @@ import React, {useState, useEffect} from "react";
 import { Link } from "react-router-dom";
 import axios from "axios"
 import "./CreateBoardModal.css";
+import BoardCard from "../boardCard/boardCard";
 
 
 
-function CreateBoardModal({ boardInfo, setBoardInfo, showCreateBoardModal }) {
+function CreateBoardModal({ boardInfo, setBoardInfo, show,setShowCreateBoardModal, addBoard }) {
+  if (!show) return null;
+
   const [input, setInput] = useState("");
-  const [category, setCategory] = useState(null);
 
-  // Pass the information entered back to the component that called it
-  function handleSubmit() {}
 
-  function handleChange(value) {
-    setInput(value);
+  function createBoard () {
+    console.log("create board function");
+    addBoard(boardInfo);
+    setBoardInfo({});
+    setShowCreateBoardModal(false);
   }
+  
+  // Pass the information entered back to the component that called it
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!boardInfo.title || !boardInfo.category || !boardInfo.author) {
+      alert("Please fill in all fields.");
+      return;
+    }
+    addBoard(boardInfo);
+    setBoardInfo({});
+    setShowCreateBoardModal(false);
+  };
 
   // Send in the showCreateBoardModal setter, which allows for one to exit the modal upon submission
 
   return (
     <div className="createBoardInfo">
-      {showCreateBoardModal(true)}
-
       {/* Close button */}
       <div className="control">
         <button
@@ -29,7 +42,7 @@ function CreateBoardModal({ boardInfo, setBoardInfo, showCreateBoardModal }) {
           type="button"
           onClick={() => {
             setInput("");
-            showCreateBoardModal(false);
+            setShowCreateBoardModal(false);
             // Function to close modal here
           }}
         >
@@ -47,7 +60,7 @@ function CreateBoardModal({ boardInfo, setBoardInfo, showCreateBoardModal }) {
             <input
               className="input"
               type="text"
-              value={input}
+              value={boardInfo.title || ""}
               onChange={(e) =>
                 setBoardInfo((u) => ({ ...u, title: e.target.value }))
               }
@@ -59,29 +72,16 @@ function CreateBoardModal({ boardInfo, setBoardInfo, showCreateBoardModal }) {
         <div className="drop-down">
           <label className="label">Category:</label>
           <div className="control">
-            <select>
-              <option>Select a category</option>
-              <option
-                onChange={(e) =>
-                  setBoardInfo((u) => ({ ...u, category: "Celebration" }))
-                }
-              >
-                Celebration
-              </option>
-              <option
-                onChange={(e) =>
-                  setBoardInfo((u) => ({ ...u, category: "Thank You" }))
-                }
-              >
-                Thank You
-              </option>
-              <option
-                onChange={(e) =>
-                  setBoardInfo((u) => ({ ...u, category: "Inspiration" }))
-                }
-              >
-                Inspiration
-              </option>
+            <select
+              value={boardInfo.category || ""}
+              onChange={(e) =>
+                setBoardInfo((u) => ({ ...u, category: e.target.value }))
+              }
+            >
+              <option value="">Select a category</option>
+              <option value="Celebration">Celebration</option>
+              <option value="Thank You">Thank You</option>
+              <option value="Inspiration">Inspiration</option>
             </select>
           </div>
         </div>
@@ -93,7 +93,7 @@ function CreateBoardModal({ boardInfo, setBoardInfo, showCreateBoardModal }) {
             <input
               className="input"
               type="text"
-              value={input}
+              value={boardInfo.author || ""}
               onChange={(e) =>
                 setBoardInfo((u) => ({ ...u, author: e.target.value }))
               }
@@ -103,15 +103,7 @@ function CreateBoardModal({ boardInfo, setBoardInfo, showCreateBoardModal }) {
 
         {/* Create board button */}
         <div className="control">
-          <button
-            className="button"
-            type="button"
-            onClick={() => {
-              setInput("");
-              showCreateBoardModal(false);
-              // Function to close modal here
-            }}
-          >
+          <button className="button" type="submit" >
             Create Board
           </button>
         </div>
