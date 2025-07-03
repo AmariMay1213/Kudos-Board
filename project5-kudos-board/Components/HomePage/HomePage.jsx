@@ -51,3 +51,4 @@ function HomePage({ boards, createBoard, deleteBoard, categories, handleFilterBy
 }
 
 export default HomePage;
+
