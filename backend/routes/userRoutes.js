@@ -9,11 +9,10 @@ const authenticateToken = require('../middleware/auth');
 
 
 router.get("/", controller.getAll);
-router.get("/:id", controller.getUserById); 
 router.get("/:id", authenticateToken, controller.getUserById);
 router.post("/register", controller.registerUser);
 router.post("/login", controller.userLogin)
-router.delete("/:id", controller.removeUser);
+router.delete("/:id", authenticateToken, controller.removeUser);
 
 
 module.exports = router;
