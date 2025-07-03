@@ -125,4 +125,3 @@ const OptionsBar = ({ setKudosBoards, setShowCreateBoardModal, setBoardInfo, boa
 }
 
 export default OptionsBar
-
