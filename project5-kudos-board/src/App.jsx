@@ -159,7 +159,6 @@ const createCard = async (newCard) => {
 
 const createBoard = async (newBoard) => {
   try {
-    console.log(newBoard)
     const { data } = await axios.post("http://localhost:3000/boards", newBoard
       //, {
     //  headers: {
@@ -169,8 +168,6 @@ const createBoard = async (newBoard) => {
     );
     setBoards((prev) => [...prev, data]); 
     console.log("Created board: ", data);
-    console.log("Creating board with token:", token);
-
   } catch (err) {
     console.log("Error creating board: ", err);
   }
