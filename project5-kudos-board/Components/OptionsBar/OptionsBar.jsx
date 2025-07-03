@@ -1,11 +1,15 @@
 // import { useState, useEffect } from "react";
 import axios from "axios";
 import "./OptionsBar.css"
+import CreateBoardModal from "../createBoardModal/createBoardModal";
+import { useState } from "react";
 // import CreateBoardModal from "../createBoardModal/createBoardModal";
 // TODO: export function for createNewBoard from Jessica
 // TODO: import {function name} from <whereever it is from>
 
 const OptionsBar = ({ setKudosBoards }) => {
+    const [showCreateBoardModal, setShowCreateBoardModal] = useState(false);
+    const [boardInfo, setBoardInfo] = useState({});
 
     async function getAll (){
         console.log("Geting the sort for all available cards: "); // log the search query to the console
@@ -76,6 +80,7 @@ const OptionsBar = ({ setKudosBoards }) => {
 
     function createNewBoard (){
         // TODO: add logic from Jessica
+        setShowCreateBoardModal(true);
     }
 
     return (
@@ -90,6 +95,13 @@ const OptionsBar = ({ setKudosBoards }) => {
             </div>
             <div className= "create-board-button">
                 <button onClick={createNewBoard}>Create a New Board</button>
+                {showCreateBoardModal && (
+                    <CreateBoardModal 
+                    boardInfo={boardInfo}
+                    setBoardInfo={setBoardInfo}
+                    showCreateBoardModal={setShowCreateBoardModal}
+                    />
+                )}
             </div> 
         </div>
 
