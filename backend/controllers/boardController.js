@@ -55,7 +55,7 @@ exports.getById = async (req, res) => {
 
 exports.create = async (req, res) => {
   console.log("THIS IS OUR BODY", req.body);
-  const { title, category, image_url, author } = req.body;
+  const { title, category, image_url = "", author } = req.body;
 
   try {
     const board = await prisma.board.create({
