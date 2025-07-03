@@ -11,7 +11,7 @@ import BoardGrid from "../boardGrid/boardGrid";
 import CreateBoardModal from "../CreateBoardModal/CreateBoardModal";
 
 
-function HomePage({boards, createBoard, deleteBoard, user}) {
+function HomePage({boards, createBoard, deleteBoard}) {
   // needs a search bar with a search and clear
   // needs a nav bar with -- all, recent and our other categories : celebration, thank you, inspiration
   // create new board button
@@ -22,12 +22,9 @@ function HomePage({boards, createBoard, deleteBoard, user}) {
     const [showCreateBoardModal, setShowCreateBoardModal] = useState(false);
 
     const addBoard = (newBoard) => {
-      const completeBoard = {
-        ...newBoard,
-        user_Id: newBoard.user_Id || user?.id,
-      };
-      createBoard(completeBoard);
+      createBoard(newBoard);
     };
+    
 
   return (
     <>
