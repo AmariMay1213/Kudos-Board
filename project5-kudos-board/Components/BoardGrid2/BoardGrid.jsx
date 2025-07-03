@@ -1,4 +1,5 @@
 //import BoardCard from "../BoardCard/BoardCard";
+//For the pull request
 import "./BoardGrid.css";
 
 function BoardGrid({ boards = [] }) {
