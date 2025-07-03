@@ -21,6 +21,7 @@ function CreateBoardModal({ boardInfo, setBoardInfo, show,setShowCreateBoardModa
   
   // Pass the information entered back to the component that called it
   const handleSubmit = (e) => {
+    console.log("submitting boardInfo", boardInfo)
     e.preventDefault();
     if (!boardInfo.title || !boardInfo.category || !boardInfo.author) {
       alert("Please fill in all fields.");
