@@ -92,7 +92,7 @@ function App() {
   useEffect(() => {
     const fetchBoards = async () => {
       try {
-        const { data } = await axios.get(`http://localhost:3000/boards/`);
+        const { data } = await axios.get(`http://localhost:3000/boards`);
         console.log(data);
         setBoards(data);
         console.log("Fetched boards:", data);
@@ -107,7 +107,7 @@ function App() {
     const fetchCards = async () => {
       try {
         const { data } = await axios.get(`http://localhost:3000/cards/`);
-        console.log(data);
+        console.log("card data",data);
         setCards(data);
         console.log("Fetched cards:", data);
       } catch (err) {
@@ -219,6 +219,11 @@ function App() {
                 />
               }
             />
+
+            {/* <Route
+              path="/kudos-board-card/:boardId"
+              element={<KudosBoardCards />}
+            /> */}
 
             {/* TODO: below, add the actual route the amari makes to specifically get information for one board */}
             {/* <Route path="/boards" element = {<KudosBoardCards/>} />  */}
