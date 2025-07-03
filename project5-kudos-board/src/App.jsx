@@ -3,6 +3,7 @@ import "./App.css";
 import HomePage from "../Components/HomePage/HomePage";
 // import KudosBoards from "../Components/KudosBoards/KudosBoards"
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import LoginPage from "../Components/LoginPage/LoginPage";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import KudosBoards from "../Components/KudosBoards/KudosBoards";

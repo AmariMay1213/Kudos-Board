@@ -37,10 +37,9 @@ function HomePage({boards, createBoard, deleteBoard, user}) {
       <SearchBar setKudosBoards={setKudosBoards} />
 
       <OptionsBar
-      setKudosBoards={setKudosBoards} 
-      setShowCreateBoardModal = {setShowCreateBoardModal}
-      setBoardInfo = {setBoardInfo}
-      
+        setKudosBoards={setKudosBoards} 
+        setShowCreateBoardModal = {setShowCreateBoardModal}
+        setBoardInfo = {setBoardInfo}
       />
 
       {/* TODO: lets double check this line, should be a div just for the kudos boards to be listed in a grid, but you never know */}
