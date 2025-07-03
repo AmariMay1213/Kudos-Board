@@ -36,7 +36,6 @@ function CreateCardModal({ cardInfo, setBoardInfo, show, setShowCreateCardModal,
 
   }
 
-
   // Send in the showCreateCardModal setter, which allows for one to exit the modal upon submission
 
   return (

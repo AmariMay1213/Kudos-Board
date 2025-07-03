@@ -3,6 +3,10 @@ body {
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
+  background-image: url("https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExdGtncDk0NDA5djM0dTFtYzVreWVvd3M5bDgycDZzbG5laHlmYjkyeCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/P9vP8eFndm8FclATpS/giphy.gif");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 
 /* Header Styles */
@@ -10,10 +14,11 @@ header {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100px; /* Adjust height as needed */
+  width: 100vw;
+  height: 250px;
+  overflow: hidden;
   padding: 50px;
-  background-color: #000000;
+  background-color: #f9dafe;
   color: white;
   display: flex;
   align-items: center;
@@ -22,7 +27,7 @@ header {
 }
 
 .headerLogo img {
-  height: 180px;
+  height: 300px;
 }
 
 /* Footer Styles */
@@ -32,8 +37,8 @@ footer {
   left: 0;
   width: 100%;
   height: 50px; /* Adjust height as needed */
-  background-color: #000000;
-  color: white;
+  background-color: #f9dafe;
+  color: rgb(0, 0, 0);
   display: flex;
   align-items: center;
   justify-content: center; /* Centers the footer text horizontally */
