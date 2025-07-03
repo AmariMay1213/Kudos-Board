@@ -17,33 +17,29 @@ function HomePage({boards, createBoard, deleteBoard, user}) {
   // create new board button
   // boards list section
 
-    const [kudosBoards, setKudosBoards] = useState([]);
+    //const [kudosBoards, setKudosBoards] = useState([]);
     const [boardInfo, setBoardInfo] = useState({});
     const [showCreateBoardModal, setShowCreateBoardModal] = useState(false);
 
     const addBoard = (newBoard) => {
       const completeBoard = {
-        ...newBoard, user_Id: newBoard.user_Id || user?.id,
+        ...newBoard,
+        user_Id: newBoard.user_Id || user?.id,
       };
       createBoard(completeBoard);
-      setKudosBoards((prev) => [
-        ...prev,
-        { ...newBoard, board_Id: Date.now() }, // Ensure unique board_Id
-      ]);
     };
 
   return (
     <>
-      <SearchBar setKudosBoards={setKudosBoards} />
+      <SearchBar/>
 
       <OptionsBar
-        setKudosBoards={setKudosBoards} 
         setShowCreateBoardModal = {setShowCreateBoardModal}
         setBoardInfo = {setBoardInfo}
       />
 
       {/* TODO: lets double check this line, should be a div just for the kudos boards to be listed in a grid, but you never know */}
-      <BoardGrid kudosBoards={kudosBoards} />
+      <BoardGrid kudosBoards={boards} />
       
       {showCreateBoardModal &&
       (<CreateBoardModal
