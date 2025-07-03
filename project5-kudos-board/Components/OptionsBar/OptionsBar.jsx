@@ -1,28 +1,31 @@
-// import { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import "./OptionsBar.css"
 import CreateBoardModal from "../CreateBoardModal/CreateBoardModal";
-import { useState } from "react";
 // import CreateBoardModal from "../createBoardModal/createBoardModal";
 // TODO: export function for createNewBoard from Jessica
 // TODO: import {function name} from <whereever it is from>
 
-const OptionsBar = ({ setKudosBoards, setShowCreateBoardModal, setBoardInfo }) => {
+const OptionsBar = ({ setKudosBoards, setShowCreateBoardModal, setBoardInfo, boards, setBoards, fetchBoards }) => {
     //const [showCreateBoardModal, setShowCreateBoardModal] = useState(false);
     //const [boardInfo, setBoardInfo] = useState({});
 
-    async function getAll (){
-        console.log("Geting the sort for all available cards: "); // log the search query to the console
 
+    async function getAll() {
         try {
-            const { data } = await axios.get(
-                // TODO: insert some link from back end + get all route
-            );
-            setKudosBoards(data.results); // update kudosBoard display with the search results
+            const { data } = await axios.get(`http://localhost:3000/boards/`);
+            console.log(data);
+            setBoards(data);
+            console.log("Fetched boards:", data);
         } catch (err) {
-            console.error("Error finding this input: ", err);
+            console.error("Error boards: ", err);
         }
     }
+
+    useEffect(() => {
+        getAll();
+    }, []);
+    
 
     async function getRecents (){
         console.log("Geting the sort for all available cards most recently made to least recently made order: "); // log the search query to the console
@@ -31,11 +34,15 @@ const OptionsBar = ({ setKudosBoards, setShowCreateBoardModal, setBoardInfo }) =
             const { data } = await axios.get(
                 // TODO: insert some link from back end + get recents route (most to least recent)
             );
-            setKudosBoards(data.results); // update kudosBoard display with the search results
+            setBoards(data); // update kudosBoard display with the search results
         } catch (err) {
             console.error("Error finding this input: ", err);
         }
     }
+
+    useEffect(() => {
+        getRecents();
+    }, []);
 
     async function getCelebrations (){
         console.log("Geting the sort for all celebration cards "); // log the search query to the console
@@ -44,12 +51,16 @@ const OptionsBar = ({ setKudosBoards, setShowCreateBoardModal, setBoardInfo }) =
             const { data } = await axios.get(
                 // TODO: insert some link from back end + get celebrations route 
             );
-            setKudosBoards(data.results); // update kudosBoard display with the search results
+            setBoards(data); // update kudosBoard display with the search results
         } catch (err) {
             console.error("Error finding this input: ", err);
         }
         
     }
+
+    useEffect(() => {
+        getCelebrations();
+    }, []);
 
     async function getThankYous (){
         console.log("Geting the sort for all thank you cards "); // log the search query to the console
@@ -58,28 +69,36 @@ const OptionsBar = ({ setKudosBoards, setShowCreateBoardModal, setBoardInfo }) =
             const { data } = await axios.get(
                 // TODO: insert some link from back end + get thank yous route 
             );
-            setKudosBoards(data.results); // update kudosBoard display with the search results
+            setBoards(data); // update kudosBoard display with the search results
         } catch (err) {
             console.error("Error finding this input: ", err);
         }
         
     }
 
+    useEffect(() => {
+        getThankYous();
+    }, []);
+
+
     async function getInspirations (){
-            console.log("Geting the sort for all inspiration cards "); // log the search query to the console
+        console.log("Geting the sort for all inspiration cards "); // log the search query to the console
 
         try {
             const { data } = await axios.get(
                 // TODO: insert some link from back end + get inspiration route 
             );
-            setKudosBoards(data.results); // update kudosBoard display with the search results
+            setBoards(data); // update kudosBoard display with the search results
         } catch (err) {
             console.error("Error finding this input: ", err);
         }
     }
 
+    useEffect(() => {
+        getInspirations();
+    }, []);
+
     function createNewBoard (){
-        // TODO: add logic from Jessica
         setBoardInfo({})
         setShowCreateBoardModal(true);
     }
