@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import no_image from "../../src/assets/no_image.jpeg";
 import "./BoardCard.css";
 
-//Making this comment, so that the file names can change. Doing this again
+//Making this comment, so that the file names can change. Doing this again. Testing to see if there will be any merge conflicts.
 
 function BoardCard({board}) {
   return (
