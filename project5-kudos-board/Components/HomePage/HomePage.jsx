@@ -34,13 +34,15 @@ function HomePage({boards, createBoard, deleteBoard, user}) {
 
   return (
     <>
-      <SearchBar setKudosBoards={setKudosBoards} />
+      <div className="search-option-section">
+        <SearchBar setKudosBoards={setKudosBoards} />
 
-      <OptionsBar
-        setKudosBoards={setKudosBoards} 
-        setShowCreateBoardModal = {setShowCreateBoardModal}
-        setBoardInfo = {setBoardInfo}
-      />
+        <OptionsBar
+          setKudosBoards={setKudosBoards} 
+          setShowCreateBoardModal = {setShowCreateBoardModal}
+          setBoardInfo = {setBoardInfo}
+        />
+      </div>
 
       {/* TODO: lets double check this line, should be a div just for the kudos boards to be listed in a grid, but you never know */}
       <BoardGrid kudosBoards={kudosBoards} />

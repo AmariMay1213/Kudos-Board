@@ -1,18 +1,29 @@
 .BoardCard {
-    height: 330px;
-    width: 250px;
-    background: var(--pure-white);
+    height: 400px;
+    width: 275px;
+    background-color: #f9dafe;
     display: flex;
     flex-direction: column;
-    border: solid 1px var(--border-color);
+    border: solid 5px #f9dafe;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    font-family: "Hoefler Text", "Baskerville Old Face", Garamond, "Times New Roman", serif;
   }
-  .BoardCard .media {
+
+  .BoardCard:hover {
+    transform: scale(1.05) translateY(-2px);
+    box-shadow: 0 12px 20px rgba(255, 255, 255, 0.3);
+  }
+
+  /* .BoardCard .media {
     height: 250px;
     width: 100%;
-  }
+  } */
   .BoardCard .media img {
     height: 250px;
-    width: 248px;
+    width: 275px;
+    border-radius: 8px;
   }
   .BoardCard .board-info {
     flex: 1;

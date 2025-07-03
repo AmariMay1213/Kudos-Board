@@ -14,6 +14,8 @@ function CreateCardModal({ showCreateCardModal }) {
     setInput(value);
   }
 
+  // function to close modal
+
   // Send in the showCreateCardModal setter, which allows for one to exit the modal upon submission
 
   return (
