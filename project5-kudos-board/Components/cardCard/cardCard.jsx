@@ -34,9 +34,8 @@ function CardCard({ card, deleteCard }) {
           <div className="buttons">
             <i className="material-icons">Upvote</i>
             <i className="material-icons" onClick={handleDeleteClick}>
-  delete
-</i>
-
+             Delete Card
+            </i>
           </div>
         </div>
       </div>
