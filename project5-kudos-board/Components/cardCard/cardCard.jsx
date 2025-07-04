@@ -7,9 +7,16 @@ import axios from "axios";
 //Adding a comment so that there is something to commit
 //Seeing if I can do a pull request from this
 
-function CardCard({ card }) {
+function CardCard({ card, deleteCard}) {
 
   const [upvotes, setUpvotes] = useState(card.upVotes || 0);
+
+  const handleDeleteClick = () => {
+    const confirmDelete = window.confirm("Are you sure you want to delete this card?");
+    if (confirmDelete){
+      deleteCard(card.card_Id);
+    }
+  };
 
   const handleUpvote = async () => {
     try {
@@ -42,7 +49,10 @@ function CardCard({ card }) {
             <i className="material-icons" onClick={handleUpvote}>
               Upvote
             </i>
-            <span>{upvotes}</span> <i className="material-icons">Delete</i>
+            <span>{upvotes}</span> 
+            <i className="material-icons" onClick={handleDeleteClick}>
+             Delete Card
+            </i>
           </div>
         </div>
       </div>

@@ -1,7 +1,7 @@
 import CardCard from "../CardCard/CardCard";
 import "./CardGrid.css";
 
-function CardGrid({ cards = [] }) {
+function CardGrid({ cards = [], deleteCard }) {
   return (
     <div id="Buy" className="CardGrid">
       <div className="content">
@@ -14,6 +14,7 @@ function CardGrid({ cards = [] }) {
             cards.map((card) => <CardCard
               key={card.card_Id}
               card={card}
+              deleteCard={deleteCard}
             />)
           )}
         </div>
