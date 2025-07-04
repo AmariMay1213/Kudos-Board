@@ -10,12 +10,9 @@ function CreateBoardModal({
   show,
   setShowCreateBoardModal,
   createBoard,
-  categories,
 }) {
   if (!show) return null;
-
   const [input, setInput] = useState("");
-
   // Pass the information entered back to the component that called it
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -28,9 +25,7 @@ function CreateBoardModal({
       setShowCreateBoardModal(false);
     });
   };
-
   // Send in the showCreateBoardModal setter, which allows for one to exit the modal upon submission
-
   return (
     <div className="createBoardInfo">
       {/* Close button */}
@@ -47,7 +42,6 @@ function CreateBoardModal({
           Close
         </button>
       </div>
-
       {/* Form section for the create new board moda; */}
       <form onSubmit={handleSubmit}>
         <h2>Create a New Board</h2>
@@ -65,7 +59,6 @@ function CreateBoardModal({
             />
           </div>
         </div>
-
         {/* Category drop down */}
         <div className="drop-down">
           <label className="label">Category:</label>
@@ -76,16 +69,13 @@ function CreateBoardModal({
                 setBoardInfo((u) => ({ ...u, category: e.target.value }))
               }
             >
-              {categories.map((category) => (
-               <option key={category} value={category}>
-              {category}
-                  </option>
-                ))}
-
+              <option value="">Select a category</option>
+              <option value="Celebration">Celebration</option>
+              <option value="Thank You">Thank You</option>
+              <option value="Inspiration">Inspiration</option>
             </select>
           </div>
         </div>
-
         {/* Author text box */}
         <div className="input-field">
           <label className="label">Author</label>
@@ -111,4 +101,8 @@ function CreateBoardModal({
   );
 }
 
+
 export default CreateBoardModal;
+
+
+

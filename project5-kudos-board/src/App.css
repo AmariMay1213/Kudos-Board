@@ -1,12 +1,12 @@
 /* Make body have space for fixed header and footer */
 body {
-  margin: 0;
-  padding: 0;
+  padding: 300px 100px;
   font-family: Arial, sans-serif;
   background-image: url("https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExdGtncDk0NDA5djM0dTFtYzVreWVvd3M5bDgycDZzbG5laHlmYjkyeCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/P9vP8eFndm8FclATpS/giphy.gif");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+  
 }
 
 /* Header Styles */

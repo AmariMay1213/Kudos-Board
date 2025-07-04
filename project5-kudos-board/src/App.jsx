@@ -93,7 +93,7 @@ function App() {
   useEffect(() => {
     const fetchBoards = async () => {
       try {
-        const { data } = await axios.get(`http://localhost:3000/boards/`);
+        const { data } = await axios.get(`http://localhost:3000/boards`);
         console.log(data);
         setBoards(data);
         console.log("Fetched boards:", data);
@@ -108,7 +108,7 @@ function App() {
     const fetchCards = async () => {
       try {
         const { data } = await axios.get(`http://localhost:3000/cards/`);
-        console.log(data);
+        console.log("card data",data);
         setCards(data);
         console.log("Fetched cards:", data);
       } catch (err) {
@@ -182,6 +182,7 @@ function App() {
   };
 
   const createBoard = async (newBoard) => {
+    console.log(newBoard)
     try {
       const { data } = await axios.post(
         "http://localhost:3000/boards",
@@ -211,6 +212,8 @@ function App() {
       console.log("Error deleting board:", err);
     }
   };
+
+  console.log(cards);
 
   return (
     <>
@@ -257,7 +260,6 @@ function App() {
                 />
               }
             />
-
 
             {/* TODO: below, add the actual route the amari makes to specifically get information for one board */}
             {/* <Route path="/boards" element = {<KudosBoardCards/>} />  */}
