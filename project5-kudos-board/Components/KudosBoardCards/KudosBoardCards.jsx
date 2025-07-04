@@ -2,7 +2,7 @@
 // import './App.css'
 //import { useNavigate } from "react-router-dom";
 import axios from 'axios'
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, useLocation } from "react-router-dom";
 import {useState, useEffect} from 'react'
 
 //THIS IS FOR WHEN YOU PRESS A BOARD ON THE HOME PAGE WANT TO LOOK AT SPECIFIC CARDS OF THAT BOARD
@@ -21,6 +21,10 @@ function KudosBoardCards({createCard, deleteCard }){
     const { boardId } = useParams();
     const {board, setBoard} = useState(null);
     const {cards, setCards} = useState([])
+
+    const location = useLocation();
+    const boardTitle = location.state?.title;
+
 
     useEffect (() => {
         
@@ -61,7 +65,7 @@ function KudosBoardCards({createCard, deleteCard }){
             <button onClick={handleBack}>Home Page</button>
         </div>
         <div className= "board-title">
-            <h2>{board_Id}</h2>
+            <h2>{boardTitle}</h2>
         </div>
 
 
