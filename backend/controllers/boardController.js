@@ -1,7 +1,7 @@
 const prisma = require("../models/board");
 
 exports.getAll = async (req, res) => {
-  const { category, sort } = req.query;
+  const { category, sort, search} = req.query;
 
   const filters = {};
   const orderBy = [];
@@ -10,6 +10,13 @@ exports.getAll = async (req, res) => {
   if (category) {
     filters.category = {
       equals: category,
+      mode: "insensitive",
+    };
+  }
+
+  if(search){
+    filters.title ={
+      contains: search,
       mode: "insensitive",
     };
   }
