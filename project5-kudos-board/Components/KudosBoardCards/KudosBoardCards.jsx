@@ -14,6 +14,7 @@ function KudosBoardCards({createCard, deleteCard }){
     // create card button
     // container for cards
 
+    console.log("Kudos board");
     const { board_Id } = useParams(); 
 
     const navigate = useNavigate();
@@ -53,17 +54,12 @@ function KudosBoardCards({createCard, deleteCard }){
         navigate("/"); // TODO: make sure this matches with the route in app.jsx and amari's backend
     }
 
-    // const createCard = () => {
-    //     // TODO: get this info from Jessica
-    // }
-
 
     return (
         <>
         <div className="back-button">
             <button onClick={handleBack}>Home Page</button>
         </div>
-        {/* title of card would have to come from jessica */}
         <div className= "board-title">
             <h2>{board_Id}</h2>
         </div>
