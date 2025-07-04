@@ -145,13 +145,23 @@ function App() {
 
   const handleRecentSort = async () =>{
     try{
-      const res = await axios.get("http://localhost:3000/boards?sort=created_at_desc");
+      const res = await axios.get(`http://localhost:3000/boards?sort=created_at_desc`);
       setBoards(res.data);
 
     }catch(err){
       console.error("Error, can not sort by most recent: ", err)
     }
   };
+
+ const handleSearch = async (query) => {
+  try {
+    const res = await axios.get(`http://localhost:3000/boards?search=${encodeURIComponent(query)}`);
+    setBoards(res.data);
+  } catch (err) {
+    console.error("Error, search is not working: ", err); 
+  }
+};
+
 
   const createCard = async (newCard) => {
     try {
@@ -237,6 +247,7 @@ function App() {
                   categories={categories}
                   handleFilterByCategory={handleFilterByCategory}
                   handleRecentSort={handleRecentSort}
+                  handleSearch={handleSearch}
                 />
               }
             />
