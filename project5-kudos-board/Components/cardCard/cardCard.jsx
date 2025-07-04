@@ -21,8 +21,8 @@ function CardCard({ card }) {
 
       <div className="card-info">
         <div className="info">
-          <p className="card-name">{card.title}</p>
-          <p className="card-description">{card.description}</p>
+          <p className="card-name">Title: {card.title}</p>
+          <p className="card-description">Description: {card.description}</p>
         </div>
         <div className="actions">
           <div className="buttons">
