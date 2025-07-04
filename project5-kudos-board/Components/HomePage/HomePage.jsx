@@ -36,7 +36,7 @@ function HomePage({ boards, createBoard, deleteBoard, categories, handleFilterBy
 
 
       {/* TODO: lets double check this line, should be a div just for the kudos boards to be listed in a grid, but you never know */}
-      <BoardGrid kudosBoards={boards} />
+        <BoardGrid kudosBoards={boards} deleteBoard={deleteBoard} />
 
       {showCreateBoardModal && (
         <CreateBoardModal
