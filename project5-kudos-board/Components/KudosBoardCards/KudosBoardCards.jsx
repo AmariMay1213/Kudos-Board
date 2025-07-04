@@ -2,7 +2,7 @@
 // import './App.css'
 //import { useNavigate } from "react-router-dom";
 import axios from 'axios'
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, useLocation } from "react-router-dom";
 import {useState, useEffect} from 'react'
 import CardGrid from "../CardGrid/CardGrid"
 import CreateCard from "../CreateCardModal/createCardModal"
@@ -48,6 +48,10 @@ function KudosBoardCards({ deleteCard }){
     };
 
 
+    const location = useLocation();
+    const boardTitle = location.state?.title;
+
+
     useEffect (() => {
         
         const fetchData = async () => {
@@ -90,8 +94,10 @@ function KudosBoardCards({ deleteCard }){
         <div className="back-button">
           <button onClick={handleBack}>Home Page</button>
         </div>
-        <div className="board-title">
-          <h2>{board_Id}</h2>
+        <div className= "board-title">
+            <h2>{boardTitle}</h2>
+        </div>
+
 
         </div>
         <CreateCard
