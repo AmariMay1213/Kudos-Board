@@ -7,7 +7,7 @@ import {useState, useEffect} from 'react'
 
 //THIS IS FOR WHEN YOU PRESS A BOARD ON THE HOME PAGE WANT TO LOOK AT SPECIFIC CARDS OF THAT BOARD
 
-function KudosBoardCards({ cards, createCard, deleteCard }){
+function KudosBoardCards({ createCard, deleteCard }){
     // back button to home page
     // kudo board logo
     // title of card
