@@ -12,6 +12,7 @@ function App() {
   const [boards, setBoards] = useState([]);
   const [cards, setCards] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [categories, setCategories] = useState([]); 
   //   const [error, setError] = useState(null)
   //   const [user, setUser] = useState(null);
   //   const [token, setToken] = useState("");
@@ -117,6 +118,41 @@ function App() {
     fetchCards();
   }, []);
 
+  useEffect(()=>{
+    const fetchCategories = async () => {
+      try{
+        const {data} = await axios.get(`http://localhost:3000/boards/categories`);
+        console.log(data);
+        setCategories(data.categories);
+        console.log("Fetched Board for this category: ", data.categories); 
+      }catch(err){
+        console.error("Error grabbing cards from that category: ", err); 
+      }
+
+    };
+    fetchCategories(); 
+  }, []); 
+
+  const handleFilterByCategory = async (category) => {
+  try {
+    const res = await axios.get(`http://localhost:3000/boards?category=${category}`);
+    setBoards(res.data);
+  } catch (err) {
+    console.error(`Error filtering by ${category}:`, err);
+  }
+};
+
+
+  const handleRecentSort = async () =>{
+    try{
+      const res = await axios.get("http://localhost:3000/boards?sort=created_at_desc");
+      setBoards(res.data);
+
+    }catch(err){
+      console.error("Error, can not sort by most recent: ", err)
+    }
+  };
+
   const createCard = async (newCard) => {
     try {
       const payload = {
@@ -196,6 +232,9 @@ function App() {
                   // user={user}
                   createBoard={createBoard}
                   deleteBoard={deleteBoard}
+                  categories={categories}
+                  handleFilterByCategory={handleFilterByCategory}
+                  handleRecentSort={handleRecentSort}
                 />
               }
             />
@@ -219,11 +258,6 @@ function App() {
                 />
               }
             />
-
-            {/* <Route
-              path="/kudos-board-card/:boardId"
-              element={<KudosBoardCards />}
-            /> */}
 
             {/* TODO: below, add the actual route the amari makes to specifically get information for one board */}
             {/* <Route path="/boards" element = {<KudosBoardCards/>} />  */}
