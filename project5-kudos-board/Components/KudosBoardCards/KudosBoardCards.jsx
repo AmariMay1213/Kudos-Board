@@ -41,8 +41,10 @@ function KudosBoardCards({ deleteCard }){
         const cardRes = await axios.get(
           `http://localhost:3000/cards/${board_Id}/board`
         );
+        console.log("New cards list:", cardRes.data);
         setCards(cardRes.data);
-      } catch (err) {
+    
+    } catch (err) {
         console.error("Error creating card:", err);
       }
     };
