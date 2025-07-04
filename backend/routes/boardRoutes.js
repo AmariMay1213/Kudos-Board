@@ -5,14 +5,12 @@ const controller = require("../controllers/boardController")
 
 
 // setup all routes
-
-
 router.get("/", controller.getAll);
+router.get("/categories", controller.getCategories); // <-- moved up
 router.get("/:board_Id", controller.getById); 
-// router.get("/:id/boards", controller.getAllUserBoards); 
-router.get("/categories", controller.getCategories); // <-- Add this line
 router.post("/", controller.create);
 router.delete("/:board_Id", controller.removeById);
+
 
 
 module.exports = router;
