@@ -33,3 +33,24 @@ app.listen(PORT, () => {
 
 
 
+//Upvote function
+//The patch means we're only changing one major feel
+app.patch("/cards/:id/upvote", async (req, res) => {
+  const cardId = parseInt(req.params.id);
+
+  try {
+    const updatedCard = await prisma.card.update({
+      where: { card_Id: cardId },
+      data: {
+        upVotes: {
+          increment: 1,
+        },
+      },
+    });
+
+    res.status(200).json(updatedCard);
+  } catch (err) {
+    console.error("Failed to upvote card:", err);
+    res.status(500).json({ error: "Failed to upvote card" });
+  }
+});
