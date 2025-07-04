@@ -10,7 +10,7 @@ import OptionsBar from "../OptionsBar/OptionsBar";
 import BoardGrid from "../boardGrid/boardGrid";
 import CreateBoardModal from "../CreateBoardModal/CreateBoardModal";
 
-function HomePage({ boards, createBoard, deleteBoard, categories, handleFilterByCategory, handleRecentSort}) {
+function HomePage({ boards, createBoard, deleteBoard, categories, handleFilterByCategory, handleRecentSort, handleSearch, fetchBoards}) {
   // needs a search bar with a search and clear
   // needs a nav bar with -- all, recent and our other categories : celebration, thank you, inspiration
   // create new board button
@@ -22,14 +22,16 @@ function HomePage({ boards, createBoard, deleteBoard, categories, handleFilterBy
 
   return (
     <>
-      <SearchBar />
+    <SearchBar handleSearch={handleSearch} handleClear={fetchBoards} />
 
       <OptionsBar
        setShowCreateBoardModal={setShowCreateBoardModal}
         setBoardInfo={setBoardInfo}
         handleRecentSort={handleRecentSort}                 
       handleFilterByCategory={handleFilterByCategory}     
-      categories={categories}                             
+      categories={categories}       
+      handleSearch= {handleSearch}
+      fetchBoards={fetchBoards}                      
     />
 
 
