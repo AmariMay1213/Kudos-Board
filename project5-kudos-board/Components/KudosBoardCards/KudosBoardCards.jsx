@@ -90,6 +90,8 @@ function KudosBoardCards({ deleteCard }){
         <div className="back-button">
           <button onClick={handleBack}>Home Page</button>
         </div>
+
+        {/* Fixed extra div */}
         <div className="board-title">
           <h2>{board_Id}</h2>
 
