@@ -4,6 +4,7 @@
 import axios from 'axios'
 import { useNavigate, useParams } from "react-router-dom";
 import {useState, useEffect} from 'react'
+import CardGrid from "../CardGrid/CardGrid"
 
 //THIS IS FOR WHEN YOU PRESS A BOARD ON THE HOME PAGE WANT TO LOOK AT SPECIFIC CARDS OF THAT BOARD
 
@@ -18,17 +19,20 @@ function KudosBoardCards({createCard, deleteCard }){
     const { board_Id } = useParams(); 
 
     const navigate = useNavigate();
-    const { boardId } = useParams();
-    const {board, setBoard} = useState(null);
-    const {cards, setCards} = useState([])
+    const [board, setBoard] = useState(null);
+    const [cards, setCards] = useState([]);
 
     useEffect (() => {
         
         const fetchData = async () => {
             try {
-              console.log("board_Id param:", req.params.boardId);
-            const boardRes = await axios.get(`http://localhost:3000/boards/${boardId}`);
-            const cardRes = await axios.get(`http://localhost:3000/cards/${boardId}/board`);
+              console.log("board_Id param:", board_Id);
+              const boardRes = await axios.get(
+                `http://localhost:3000/boards/${board_Id}`
+              );
+              const cardRes = await axios.get(
+                `http://localhost:3000/cards/${board_Id}/board`
+              );
 
             console.log("Fetch boards in kudosboard", boardRes.data);
             console.log("Fetch card data",cardRes.data);
@@ -69,8 +73,11 @@ function KudosBoardCards({createCard, deleteCard }){
             <button onClick={createCard}>Create a Card</button>
         </div>
         <div>
+            <CardGrid
+                cards = {cards}
+                deleteCard = {deleteCard}
+            />
             {/* container for cards */}
-         {cards}
         </div>
 
         </>
