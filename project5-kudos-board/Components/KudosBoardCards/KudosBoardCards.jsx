@@ -33,7 +33,7 @@ function KudosBoardCards({ deleteCard }){
       try {
         const res = await axios.post("http://localhost:3000/cards", {
           ...cardData,
-          board_Id: board_Id, // Attach board ID
+          board_Id: Number(board_Id), // Attach board ID
         });
         console.log("Card created:", res.data);
 
@@ -41,8 +41,10 @@ function KudosBoardCards({ deleteCard }){
         const cardRes = await axios.get(
           `http://localhost:3000/cards/${board_Id}/board`
         );
-        setCards(cardRes.data);
-      } catch (err) {
+        console.log("New cards list:", cardRes.data.cards);
+        setCards(cardRes.data.cards);
+    
+    } catch (err) {
         console.error("Error creating card:", err);
       }
     };
@@ -65,10 +67,10 @@ function KudosBoardCards({ deleteCard }){
               );
 
             console.log("Fetch boards in kudosboard", boardRes.data);
-            console.log("Fetch card data",cardRes.data);
+            console.log("Fetch card data",cardRes.data.cards);
             setBoard(boardRes.data);
             
-            setCards(cardRes.data);
+            setCards(cardRes.data.cards);
             // console.log("Fetched boards:", data);
           } catch (err) {
             console.error("Error boards: ", err);

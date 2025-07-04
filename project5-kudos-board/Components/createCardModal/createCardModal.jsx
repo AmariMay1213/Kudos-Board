@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 import { Link } from "react-router-dom";
 import axios from "axios"
 import "./CreateCardModal.css";
+// import no_image from "../../src/assets/no_image.jpeg"
 
 
 function CreateCardModal({ board_Id, cardInfo, setCardInfo, show, setShowCreateCardModal, createCard}) {
@@ -22,7 +23,9 @@ function CreateCardModal({ board_Id, cardInfo, setCardInfo, show, setShowCreateC
 
     const cardData = {
       ...cardInfo,
-      board_Id: board_Id, 
+      board_Id: Number(board_Id), 
+      gif_Url: "https://via.placeholder.com/150",
+
     };
 
     await createCard(cardData ).then(() => {
