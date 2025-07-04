@@ -1,8 +1,7 @@
 import BoardCard from "../boardCard/boardCard";
 import "./BoardGrid.css";
 
-
-function BoardGrid({kudosBoards = [],}) {
+function BoardGrid({ kudosBoards = [], deleteBoard }) {
   return (
     <div id="Buy" className="BoardGrid">
       <div className="content">
@@ -16,6 +15,7 @@ function BoardGrid({kudosBoards = [],}) {
               <BoardCard
                 key={board.board_Id}
                 board={board}
+                deleteBoard={deleteBoard} 
               />
             ))
           )}
@@ -25,4 +25,4 @@ function BoardGrid({kudosBoards = [],}) {
   );
 }
 
-export default BoardGrid;
+export default BoardGrid; 

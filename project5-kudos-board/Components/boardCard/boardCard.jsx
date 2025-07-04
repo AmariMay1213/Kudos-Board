@@ -2,7 +2,14 @@ import { Link } from "react-router-dom";
 import no_image from "../../src/assets/no_image.jpeg";
 import "./BoardCard.css";
 
-function BoardCard({board}) {
+function BoardCard({board, deleteBoard}) {
+  const handleDeleteClick = () => {
+    const confirmDelete = window.confirm("Are you sure you want to delete this board?");
+    if (confirmDelete) {
+      deleteBoard(board.board_Id);
+    }
+  };
+
   return (
     <div className="BoardCard">
 
@@ -32,9 +39,11 @@ function BoardCard({board}) {
               View Board
             </i>
             </Link>
-            <i className="material-icons">
-              Delete Board
+            <i className="material-icons" onClick={handleDeleteClick}>
+            Delete Board
             </i>
+
+
           </div>
 
         </div>
