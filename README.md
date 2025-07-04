@@ -141,10 +141,8 @@ Deployed Application (optional): N/A
 
 
 ### Walkthrough Video
+https://www.loom.com/share/deddac96645540d5b0dbade46f1bd872?sid=e212f37c-b553-4ce7-841b-a0f5bf2a327a
 
-`TODO://` Add the embedded URL code to your animated app walkthrough below, `ADD_EMBEDDED_CODE_HERE`. Make sure the video or gif actually renders and animates when viewing this README. Ensure your walkthrough showcases the presence and/or functionality of all features you implemented above (check them off as you film!). Pay attention to any **VIDEO WALKTHROUGH SPECIAL INSTRUCTIONS** checkboxes listed above to ensure graders see the full functionality of your website! (🚫 Remove this paragraph after adding walkthrough video)
-
-`ADD_EMBEDDED_CODE_HERE`
 
 ### Reflection
 
