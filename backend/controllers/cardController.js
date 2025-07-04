@@ -115,8 +115,33 @@ exports.upvote = async (req, res) => {
 };
 
 
+// exports.removeById = async (req, res) => {
+//  const card_Id = Number(req.params.card_Id);
+//   await prisma.card.delete({ where: { card_Id } });
+//   res.status(204).end();
+// };
+
 exports.removeById = async (req, res) => {
- const card_Id = Number(req.params.card_Id);
-  await prisma.card.delete({ where: { card_Id } });
-  res.status(204).end();
+  const card_Id = Number(req.params.card_Id);
+
+  // ✅ Validate ID is a real number
+  if (isNaN(card_Id)) {
+    return res.status(400).json({ error: "Invalid card ID" });
+  }
+
+  try {
+    // ✅ Attempt to delete
+    await prisma.card.delete({ where: { card_Id } });
+    res.status(204).end(); // No content
+  } catch (err) {
+    console.error("❌ Failed to delete card:", err);
+
+    // ✅ Handle when card doesn't exist
+    if (err.code === "P2025") {
+      return res.status(404).json({ error: "Card not found" });
+    }
+
+    // ❌ Other unexpected errors
+    res.status(500).json({ error: "Server error while deleting card" });
+  }
 };

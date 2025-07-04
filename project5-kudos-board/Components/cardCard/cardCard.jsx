@@ -5,7 +5,13 @@ import "./CardCard.css";
 //Adding a comment so that there is something to commit
 //Seeing if I can do a pull request from this
 
-function CardCard({ card }) {
+function CardCard({ card, deleteCard }) {
+  const handleDeleteClick = () => {
+    const confirmDelete = window.confirm("Are you sure you want to delete this card?");
+    if (confirmDelete){
+      deleteCard(card.card_Id);
+    }
+  };
   return (
     <div className="cardCard">
       <div className="media">
@@ -21,13 +27,16 @@ function CardCard({ card }) {
 
       <div className="card-info">
         <div className="info">
-          <p className="card-name">{card.title}</p>
-          <p className="card-description">{card.description}</p>
+          <p className="card-name">Title: {card.title}</p>
+          <p className="card-description">Description: {card.description}</p>
         </div>
         <div className="actions">
           <div className="buttons">
             <i className="material-icons">Upvote</i>
-            <i className="material-icons">Delete</i>
+            <i className="material-icons" onClick={handleDeleteClick}>
+  delete
+</i>
+
           </div>
         </div>
       </div>

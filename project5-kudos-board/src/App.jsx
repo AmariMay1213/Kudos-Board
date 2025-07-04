@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import KudosBoards from "../Components/KudosBoards/KudosBoards";
 import KudosBoardCards from "../Components/KudosBoardCards/KudosBoardCards";
+
 // import { useNavigate } from "react-router-dom";
 
 function App() {
@@ -13,6 +14,8 @@ function App() {
   const [cards, setCards] = useState([]);
   const [loading, setLoading] = useState(false);
   const [categories, setCategories] = useState([]); 
+  const API_BASE = "http://localhost:3000";
+
   //   const [error, setError] = useState(null)
   //   const [user, setUser] = useState(null);
   //   const [token, setToken] = useState("");
@@ -182,32 +185,28 @@ const handleFilterByCategory = async (category) => {
   };
 
   const createCard = async (newCard) => {
-    try {
-      const payload = {
-        ...newCard,
-        // user_Id: user?.id || null, // Add the logged-in user’s ID if available
-      };
+  try {
+    const { data } = await axios.post(`http://localhost:3000/cards`, newCard);
+    const refreshed = await axios.get(`http://localhost:3000/cards`);
+    setCards(refreshed.data);
+    console.log("Created and re-fetched cards:", data);
+  } catch (err) {
+    console.log("Error creating card:", err);
+  }
+};
 
-      const { data } = await axios.post(
-        `http://localhost:3000/cards/`,
-        payload
-      );
-      setCards((prev) => [...prev, data]);
-      console.log("Created card: ", data);
-    } catch (err) {
-      console.log("Error creating card: ", err);
-    }
-  };
 
-  const deleteCard = async (cardId) => {
-    try {
-      await axios.delete(`http://localhost:3000/cards/${cardId}`);
-      setCards((prev) => prev.filter((card) => card.id !== cardId));
-      console.log("Deleted card:", cardId);
-    } catch (err) {
-      console.log("Error deleting card:", err);
-    }
-  };
+const deleteCard = async (card_Id) => {
+  try {
+    await axios.delete(`${API_BASE}/cards/${card_Id}`);
+    setCards((prevCards) => prevCards.filter((card) => card.card_Id !== card_Id));
+  } catch (error) {
+    console.error("Error deleting card:", error);
+  }
+};
+
+
+
 
   const createBoard = async (newBoard) => {
     console.log(newBoard)
