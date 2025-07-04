@@ -9,14 +9,16 @@ import CreateCard from "../CreateCardModal/createCardModal"
 
 //THIS IS FOR WHEN YOU PRESS A BOARD ON THE HOME PAGE WANT TO LOOK AT SPECIFIC CARDS OF THAT BOARD
 
+
 function KudosBoardCards({ deleteCard }){
+
     // back button to home page
     // kudo board logo
     // title of card
     // create card button
     // container for cards
 
-    
+
     console.log("Kudos board");
     const { board_Id } = useParams(); 
 
@@ -90,6 +92,7 @@ function KudosBoardCards({ deleteCard }){
         </div>
         <div className="board-title">
           <h2>{board_Id}</h2>
+
         </div>
         <CreateCard
             board_Id = {board_Id}

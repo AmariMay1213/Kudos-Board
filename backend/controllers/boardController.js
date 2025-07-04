@@ -24,19 +24,22 @@ exports.getAll = async (req, res) => {
   //this is for created_at
 
   if (sort) {
-    const [field, direction] = sort.split("_");
+  const parts = sort.split("_");
+  const direction = parts.pop(); // last element
+  const field = parts.join("_"); // rejoin the rest
 
-    const validField = ["created_at"];
-    const validDirections = ["asc", "desc"];
+  const validField = ["created_at"];
+  const validDirections = ["asc", "desc"];
 
-    if (validField.includes(field) && validDirections.includes(direction)) {
-      orderBy.push({ [field]: direction });
-    } else {
-      return res
-        .status(400)
-        .json({ error: "Invalid sort query. Use field_asc or field_desc." });
-    }
+  if (validField.includes(field) && validDirections.includes(direction)) {
+    orderBy.push({ [field]: direction });
+  } else {
+    return res
+      .status(400)
+      .json({ error: "Invalid sort query. Use field_asc or field_desc." });
   }
+}
+
 
   try {
     const boards = await prisma.board.findMany({
@@ -67,15 +70,17 @@ exports.getCategories = (req, res) => {
 
 
 exports.create = async (req, res) => {
-  console.log("THIS IS OUR BODY", req.body);
-  const { title, category, image_url = "", author } = req.body;
+  const { title, category, image_url, author } = req.body;
+
+  const randomId = Math.floor(Math.random() * 1000); // Choose from Picsum’s range
+  const generatedImage = `https://picsum.photos/id/${randomId}/300/200`;
 
   try {
     const board = await prisma.board.create({
       data: {
         title,
         category,
-        image_url,
+        image_url: image_url || generatedImage, // fallback to random image
         author,
       },
     });
@@ -84,6 +89,7 @@ exports.create = async (req, res) => {
     res.status(400).json(err);
   }
 };
+
 
 exports.removeById = async (req, res) => {
   const board_Id = Number(req.params.board_Id);
