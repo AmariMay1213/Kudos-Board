@@ -45,9 +45,35 @@ exports.getById = async (req,res) => {
   res.json(card);
 }
 
+// exports.create = async (req, res) => {
+//   const { title, description, gif_Url, board_Id, author } = req.body;
+//   // const user_Id = req.user?.id ?? null; // support optional association
+
+//   try {
+//     const newCard = await prisma.card.create({
+//       data: {
+//         title,
+//         description,
+//         gif_Url,
+//         board_Id,
+//         author,
+//         // user_Id, // if logged in, associate; else leave null
+//       },
+//     });
+//     res.status(201).json(newCard);
+//   } catch (err) {
+//     res.status(400).json({ error: "Failed to create card" });
+//   }
+// };
+
 exports.create = async (req, res) => {
+  console.log("🔥 RECEIVED BODY:", req.body);
+
   const { title, description, gif_Url, board_Id, author } = req.body;
-  // const user_Id = req.user?.id ?? null; // support optional association
+
+  if (!title || !description || !gif_Url || !board_Id) {
+    return res.status(400).json({ error: "Missing required fields." });
+  }
 
   try {
     const newCard = await prisma.card.create({
@@ -55,16 +81,17 @@ exports.create = async (req, res) => {
         title,
         description,
         gif_Url,
-        board_Id,
+        board_Id: Number(board_Id), // make sure it's a number
         author,
-        // user_Id, // if logged in, associate; else leave null
       },
     });
     res.status(201).json(newCard);
   } catch (err) {
+    console.error("❌ Prisma Error:", err);
     res.status(400).json({ error: "Failed to create card" });
   }
 };
+
 
 
 exports.upvote = async (req, res) => {
