@@ -1,10 +1,9 @@
-📝 `NOTE` Use this template to initialize the contents of a README.md file for your application. As you work on your assignment over the course of the week, update the required or stretch features lists to indicate which features you have completed by changing `[ ]` to `[x]`. (🚫 Remove this paragraph before submitting your assignment.)
 
 ## Unit Assignment: Kudos Board
 
 Submitted by: **Kenna Nyuga, Amari May, Jessica Obi**
 
-Deployed Application (optional): [Kudos Board Deployed Site](ADD_LINK_HERE)
+Deployed Application (optional): N/A
 
 ### Application Features
 
@@ -149,12 +148,9 @@ Deployed Application (optional): [Kudos Board Deployed Site](ADD_LINK_HERE)
 
 ### Reflection
 
-* Did the topics discussed in your labs prepare you to complete the assignment? Be specific, which features in your weekly assignment did you feel unprepared to complete?
-We did not have labs this week, but we do think that the previous projects and labs were very helpful for this project. We were able to look at Flixster and Student Store to help with our CSS for the modals and utilizing an API.
-We felt a little bit unprepared to complete the connecting of the database just because it was relatively difficult to do individually, and then the complexity of working in a team for the first time also seemed like it would be a barrier.
-* 
+* Did the topics discussed in your labs prepare you to complete the assignment? Be specific, which features in your weekly assignment did you feel unprepared to complete* 
 
-Add your response here
+We did not have labs this week, but we do think that the previous projects and labs were very helpful for this project. We were able to look at Flixster and Student Store to help with our CSS for the modals and utilizing an API. We felt a little bit unprepared to complete the connecting of the database just because it was relatively difficult to do individually, and then the complexity of working in a team for the first time also seemed like it would be a barrier.
 
 * If you had more time, what would you have done differently? Would you have added additional features? Changed the way your project responded to a particular event, etc.
   
@@ -163,10 +159,10 @@ Amari - If I had more time I would complete the user authentication functionalit
 Jessica - If I had more time I would add a comment section to the modals so that users are able to react and communicate more inside of the boards and the cards they are making. 
 
 We all also agreed that we would want to host this using Render because it would have been great practice and a learning opportunity.
+
 * Reflect on your project demo, what went well? Were there things that maybe didn't go as planned? Did you notice something that your peer did that you would like to try next time?
 
-Our project demo went well. We were not finished when we demoed, but we gave a great presentation, described as staying north of neutral, to showcase what we had done and what we planned to fix. At the point of our presentation, we only had the create
-board modal, search bar (no functionality), categories such as all, recents, thank yous(no functionality), and some CSS for the modals and page. Despite this, we were able to share what we felt were the 
+Our project demo went well. We were not finished when we demoed, but we gave a great presentation, described as staying north of neutral, to showcase what we had done and what we planned to fix. At the point of our presentation, we only had the create board modal, search bar (no functionality), categories such as all, recents, thank yous(no functionality), and some CSS for the modals and page. Despite this, we were able to share what we felt was our next steps. In the 4 hours after our presentation, we were able to get the images on cards working, search functionality, category functionality, the names on the card to display on the board, and the delete board button to work. We plan to finish the project, but we are not on track to do that on time.
 
 ### Open-source libraries used
 
