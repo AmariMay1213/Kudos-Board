@@ -90,19 +90,41 @@ function App() {
   //   }
   // }, []);
 
-  useEffect(() => {
-    const fetchBoards = async () => {
-      try {
-        const { data } = await axios.get(`http://localhost:3000/boards`);
-        console.log(data);
-        setBoards(data);
-        console.log("Fetched boards:", data);
-      } catch (err) {
-        console.error("Error boards: ", err);
-      }
-    };
-    fetchBoards();
-  }, []);
+  // useEffect(() => {
+  //   const fetchBoards = async () => {
+  //     try {
+  //       const { data } = await axios.get(`http://localhost:3000/boards`);
+  //       console.log(data);
+  //       setBoards(data);
+  //       console.log("Fetched boards:", data);
+  //     } catch (err) {
+  //       console.error("Error boards: ", err);
+  //     }
+  //   };
+  //   fetchBoards();
+  // }, []);
+
+  const fetchBoards = async () => {
+  try {
+    const { data } = await axios.get(`http://localhost:3000/boards`);
+    setBoards(data);
+  } catch (err) {
+    console.error("Error fetching all boards:", err);
+  }
+};
+
+const handleSearch = async (query) => {
+  try {
+    const { data } = await axios.get(
+      `http://localhost:3000/boards?search=${query}` 
+    );
+    setBoards(data);
+  } catch (err) {
+    console.error("Error searching boards:", err);
+  }
+};
+
+
 
   useEffect(() => {
     const fetchCards = async () => {
@@ -133,14 +155,20 @@ function App() {
     fetchCategories(); 
   }, []); 
 
-  const handleFilterByCategory = async (category) => {
+const handleFilterByCategory = async (category) => {
   try {
-    const res = await axios.get(`http://localhost:3000/boards?category=${category}`);
-    setBoards(res.data);
+    if (category.toLowerCase() === "all") {
+      const res = await axios.get("http://localhost:3000/boards");
+      setBoards(res.data);
+    } else {
+      const res = await axios.get(`http://localhost:3000/boards?category=${category}`);
+      setBoards(res.data);
+    }
   } catch (err) {
     console.error(`Error filtering by ${category}:`, err);
   }
 };
+
 
 
   const handleRecentSort = async () =>{
@@ -237,6 +265,8 @@ function App() {
                   categories={categories}
                   handleFilterByCategory={handleFilterByCategory}
                   handleRecentSort={handleRecentSort}
+                  handleSearch = {handleSearch}
+                  fetchBoards = {fetchBoards}
                 />
               }
             />
