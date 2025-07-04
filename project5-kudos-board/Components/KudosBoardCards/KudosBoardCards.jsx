@@ -98,8 +98,6 @@ function KudosBoardCards({ deleteCard }){
             <h2>{boardTitle}</h2>
         </div>
 
-
-        </div>
         <CreateCard
             board_Id = {board_Id}
           show={showCreateCardModal}
