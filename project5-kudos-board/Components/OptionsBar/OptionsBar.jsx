@@ -17,12 +17,14 @@ const OptionsBar = ({ setKudosBoards, setShowCreateBoardModal, setBoardInfo }) =
         try {
             const { data } = await axios.get(
                 // TODO: insert some link from back end + get all route
+                "http://localhost:3000/boards/"
             );
-            setKudosBoards(data.results); // update kudosBoard display with the search results
+            setKudosBoards(data); // update kudosBoard display with the search results
         } catch (err) {
             console.error("Error finding this input: ", err);
         }
     }
+
 
     async function getRecents (){
         console.log("Geting the sort for all available cards most recently made to least recently made order: "); // log the search query to the console
@@ -30,8 +32,9 @@ const OptionsBar = ({ setKudosBoards, setShowCreateBoardModal, setBoardInfo }) =
         try {
             const { data } = await axios.get(
                 // TODO: insert some link from back end + get recents route (most to least recent)
+                "http://localhost:3000/boards?sort=created_at_desc"
             );
-            setKudosBoards(data.results); // update kudosBoard display with the search results
+            setKudosBoards(data); // update kudosBoard display with the search results
         } catch (err) {
             console.error("Error finding this input: ", err);
         }
@@ -43,8 +46,9 @@ const OptionsBar = ({ setKudosBoards, setShowCreateBoardModal, setBoardInfo }) =
         try {
             const { data } = await axios.get(
                 // TODO: insert some link from back end + get celebrations route 
+                "http://localhost:3000/boards?category=Celebration"
             );
-            setKudosBoards(data.results); // update kudosBoard display with the search results
+            setKudosBoards(data); // update kudosBoard display with the search results
         } catch (err) {
             console.error("Error finding this input: ", err);
         }
@@ -57,8 +61,9 @@ const OptionsBar = ({ setKudosBoards, setShowCreateBoardModal, setBoardInfo }) =
         try {
             const { data } = await axios.get(
                 // TODO: insert some link from back end + get thank yous route 
+                "http://localhost:3000/boards?category=Thank_You"
             );
-            setKudosBoards(data.results); // update kudosBoard display with the search results
+            setKudosBoards(data); // update kudosBoard display with the search results
         } catch (err) {
             console.error("Error finding this input: ", err);
         }
@@ -71,8 +76,9 @@ const OptionsBar = ({ setKudosBoards, setShowCreateBoardModal, setBoardInfo }) =
         try {
             const { data } = await axios.get(
                 // TODO: insert some link from back end + get inspiration route 
+                "http://localhost:3000/boards?category=Inspiration"
             );
-            setKudosBoards(data.results); // update kudosBoard display with the search results
+            setKudosBoards(data); // update kudosBoard display with the search results
         } catch (err) {
             console.error("Error finding this input: ", err);
         }
