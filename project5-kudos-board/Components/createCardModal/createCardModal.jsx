@@ -4,7 +4,7 @@ import axios from "axios"
 import "./CreateCardModal.css";
 
 
-function CreateCardModal({ cardInfo, setCardInfo, show, setShowCreateCardModal, createCard}) {
+function CreateCardModal({ board_Id, cardInfo, setCardInfo, show, setShowCreateCardModal, createCard}) {
 
   if (!show) return null;
 
@@ -18,10 +18,20 @@ function CreateCardModal({ cardInfo, setCardInfo, show, setShowCreateCardModal, 
       alert("Please fill in all fields.");
       return;
     }
-    await createCard(cardInfo).then(() => {
+
+
+    const cardData = {
+      ...cardInfo,
+      board_Id: board_Id, 
+    };
+
+    await createCard(cardData ).then(() => {
       setCardInfo({});
       setShowCreateCardModal(false);
     });
+
+
+    console.log("cardInfo", cardData)
   };
 
   // Send in the showCreateCardModal setter, which allows for one to exit the modal upon submission
@@ -37,7 +47,7 @@ function CreateCardModal({ cardInfo, setCardInfo, show, setShowCreateCardModal, 
           type="button"
           onClick={() => {
             setInput("");
-            showCreateCardModal(false);
+            setShowCreateCardModal(false);
             // Function to close modal here
           }}
         >
@@ -96,13 +106,14 @@ function CreateCardModal({ cardInfo, setCardInfo, show, setShowCreateCardModal, 
               }
             />
           </div>
-        </div>
+       </div>
 
         {/* Create card button */}
         <div className="control">
           <button
             className="button"
             type="submit"
+          
           >
             Create Card
           </button>
