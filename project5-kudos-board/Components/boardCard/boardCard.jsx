@@ -26,7 +26,7 @@ function BoardCard({board}) {
           <div className="buttons">
 
             {/* Need to add a click that brings the user to the card route whenever they click view board */}
-            <Link to = {`/${board.board_Id}`}>
+            <Link to = {`/boards/${board.board_Id}`}>
             <i className="material-icons">
       
               View Board
